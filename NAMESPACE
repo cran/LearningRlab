@@ -1,0 +1,15 @@
+exportPattern(".")
+useDynLib(LearningRlab)
+
+importFrom("crayon", "bold")
+importFrom("crayon", "green")
+importFrom("crayon", "blue")
+importFrom("crayon", "red")
+importFrom("crayon", "yellow")
+importFrom("crayon", "italic")
+
+importFrom("magick", "image_read")
+
+importFrom("stats", "na.omit")
+
+importFrom("graphics", "plot")

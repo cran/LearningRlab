@@ -1,0 +1,215 @@
+---
+title: "learningRlab"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction to LearningRlab}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+library(LearningRlab)
+library(graphics)
+knitr::opts_chunk$set(
+  comment = "#>", 
+  collapse = TRUE
+)
+```
+
+There are three families of fuctions in LearningRlab:
+
+1. Main functions: these functions return the result of performing the process represented with the function.
+
+1. Explained fuctions: these funcions returns the process itself to get the result, with the result.
+
+1. User Interactive Functions: these functions maintain an interactive contact with the user to guide him in the resolution of the represented function.
+
+## Main Functions:
+
+To explain the use of each function, we present a dataset to work with them:
+
+```{r}
+data <- c(1,1,2,3,4,7,8,8,8,10,10,11,12,15,20,22,25)
+plot(data); 
+
+```
+
+The arithmetic mean calculus function:
+```{r}
+mean_(data)
+
+```
+
+The geometric mean calculus function:
+```{r}
+geometricMean_(data)
+
+```
+
+The mode calculus function:
+```{r}
+mode_(data)
+
+```
+
+The median calculus function:
+```{r}
+median_(data)
+
+```
+
+The standard deviation calculus function:
+```{r}
+standardDeviation_(data)
+
+```
+
+The average absolute deviation calculus function:
+```{r}
+averageDeviation_(data)
+
+```
+
+The variance calculus function:
+```{r}
+variance_(data)
+
+```
+
+The quartiles calculus function:
+```{r}
+quartile_(data)
+
+```
+
+The percentile calculus function:
+```{r}
+percentile_(data)
+
+```
+
+The absolute frecuency calculus function:
+```{r}
+frecuency_abs(data,1)
+
+```
+
+The relative frecuency calculus function:
+```{r}
+frecuency_relative(data,20)
+
+```
+
+The absolute acumulated frecuency calculus function:
+```{r}
+frecuency_absolute_acum(data,1)
+
+```
+
+The relative acumulated frecuency calculus function:
+```{r}
+frecuency_relative_acum(data,20)
+
+```
+
+
+##Explained Functions:
+
+For each main function, there are an explained function to see the calculus process:
+
+- arithmetic mean:
+```{r}
+explain.mean(data)
+
+```
+
+- geometric mean:
+```{r}
+explain.geometricMean(data)
+
+```
+
+- mode:
+```{r}
+explain.mode(data)
+
+```
+
+- median:
+```{r}
+explain.median(data)
+
+```
+
+- standard deviation:
+```{r}
+explain.standardDeviation(data)
+
+```
+
+- average absolute deviation:
+```{r}
+explain.averageDeviation(data)
+
+```
+
+- variance:
+```{r}
+explain.variance(data)
+
+```
+
+- quartile:
+```{r}
+explain.quartile(data)
+
+```
+
+- percentile:
+```{r}
+explain.percentile(data)
+
+```
+
+- absolute frecuency:
+```{r}
+explain.absolute_frecuency(data,10)
+
+```
+
+- relative frecuency:
+```{r}
+explain.relative_frecuency(data,8)
+
+```
+
+- absolute acumulated frecuency:
+```{r}
+explain.absolute_acum_frecuency(data,10)
+
+```
+
+- relative acumulated frecuency:
+```{r}
+explain.relative_acum_frecuency(data,8)
+
+```
+
+
+##User Interactive Functions:
+
+These functions are designed for the user to practice with them, and they are the following:
+
+- interactive.mean()
+- interactive.geometricMean()
+- interactive.mode()
+- interactive.median()
+- interactive.standardDeviation()
+- interactive.averageDeviation()
+- interactive.variance()
+- interactive.quartile()
+- interactive.percentile()
+- interactive.absolute_frecuency()
+- interactive.relative_frecuency()
+- interactive.absolute_acum_frecuency()
+- interactive.relative_acum_frecuency()
