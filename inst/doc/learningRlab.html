@@ -1,63 +1,322 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 
 
 <title>learningRlab</title>
 
+<script>// Hide empty <a> tag within highlighted CodeBlock for screen reader accessibility (see https://github.com/jgm/pandoc/issues/6352#issuecomment-626106786) -->
+// v0.0.1
+// Written by JooYoung Seo (jooyoung@psu.edu) and Atsushi Yasumoto on June 1st, 2020.
+
+document.addEventListener('DOMContentLoaded', function() {
+  const codeList = document.getElementsByClassName("sourceCode");
+  for (var i = 0; i < codeList.length; i++) {
+    var linkList = codeList[i].getElementsByTagName('a');
+    for (var j = 0; j < linkList.length; j++) {
+      if (linkList[j].innerHTML === "") {
+        linkList[j].setAttribute('aria-hidden', 'true');
+      }
+    }
+  }
+});
+</script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
 
 
 <style type="text/css">code{white-space: pre;}</style>
-<style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+<style type="text/css" data-origin="pandoc">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
 </style>
 
 
 
-<link href="data:text/css;charset=utf-8,body%20%7B%0Abackground%2Dcolor%3A%20%23fff%3B%0Amargin%3A%201em%20auto%3B%0Amax%2Dwidth%3A%20700px%3B%0Aoverflow%3A%20visible%3B%0Apadding%2Dleft%3A%202em%3B%0Apadding%2Dright%3A%202em%3B%0Afont%2Dfamily%3A%20%22Open%20Sans%22%2C%20%22Helvetica%20Neue%22%2C%20Helvetica%2C%20Arial%2C%20sans%2Dserif%3B%0Afont%2Dsize%3A%2014px%3B%0Aline%2Dheight%3A%201%2E35%3B%0A%7D%0A%23header%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0A%23TOC%20%7B%0Aclear%3A%20both%3B%0Amargin%3A%200%200%2010px%2010px%3B%0Apadding%3A%204px%3B%0Awidth%3A%20400px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Aborder%2Dradius%3A%205px%3B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Afont%2Dsize%3A%2013px%3B%0Aline%2Dheight%3A%201%2E3%3B%0A%7D%0A%23TOC%20%2Etoctitle%20%7B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dsize%3A%2015px%3B%0Amargin%2Dleft%3A%205px%3B%0A%7D%0A%23TOC%20ul%20%7B%0Apadding%2Dleft%3A%2040px%3B%0Amargin%2Dleft%3A%20%2D1%2E5em%3B%0Amargin%2Dtop%3A%205px%3B%0Amargin%2Dbottom%3A%205px%3B%0A%7D%0A%23TOC%20ul%20ul%20%7B%0Amargin%2Dleft%3A%20%2D2em%3B%0A%7D%0A%23TOC%20li%20%7B%0Aline%2Dheight%3A%2016px%3B%0A%7D%0Atable%20%7B%0Amargin%3A%201em%20auto%3B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dcolor%3A%20%23DDDDDD%3B%0Aborder%2Dstyle%3A%20outset%3B%0Aborder%2Dcollapse%3A%20collapse%3B%0A%7D%0Atable%20th%20%7B%0Aborder%2Dwidth%3A%202px%3B%0Apadding%3A%205px%3B%0Aborder%2Dstyle%3A%20inset%3B%0A%7D%0Atable%20td%20%7B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dstyle%3A%20inset%3B%0Aline%2Dheight%3A%2018px%3B%0Apadding%3A%205px%205px%3B%0A%7D%0Atable%2C%20table%20th%2C%20table%20td%20%7B%0Aborder%2Dleft%2Dstyle%3A%20none%3B%0Aborder%2Dright%2Dstyle%3A%20none%3B%0A%7D%0Atable%20thead%2C%20table%20tr%2Eeven%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Ap%20%7B%0Amargin%3A%200%2E5em%200%3B%0A%7D%0Ablockquote%20%7B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Apadding%3A%200%2E25em%200%2E75em%3B%0A%7D%0Ahr%20%7B%0Aborder%2Dstyle%3A%20solid%3B%0Aborder%3A%20none%3B%0Aborder%2Dtop%3A%201px%20solid%20%23777%3B%0Amargin%3A%2028px%200%3B%0A%7D%0Adl%20%7B%0Amargin%2Dleft%3A%200%3B%0A%7D%0Adl%20dd%20%7B%0Amargin%2Dbottom%3A%2013px%3B%0Amargin%2Dleft%3A%2013px%3B%0A%7D%0Adl%20dt%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Aul%20%7B%0Amargin%2Dtop%3A%200%3B%0A%7D%0Aul%20li%20%7B%0Alist%2Dstyle%3A%20circle%20outside%3B%0A%7D%0Aul%20ul%20%7B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0Apre%2C%20code%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0Aborder%2Dradius%3A%203px%3B%0Acolor%3A%20%23333%3B%0Awhite%2Dspace%3A%20pre%2Dwrap%3B%20%0A%7D%0Apre%20%7B%0Aborder%2Dradius%3A%203px%3B%0Amargin%3A%205px%200px%2010px%200px%3B%0Apadding%3A%2010px%3B%0A%7D%0Apre%3Anot%28%5Bclass%5D%29%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Acode%20%7B%0Afont%2Dfamily%3A%20Consolas%2C%20Monaco%2C%20%27Courier%20New%27%2C%20monospace%3B%0Afont%2Dsize%3A%2085%25%3B%0A%7D%0Ap%20%3E%20code%2C%20li%20%3E%20code%20%7B%0Apadding%3A%202px%200px%3B%0A%7D%0Adiv%2Efigure%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0Aimg%20%7B%0Abackground%2Dcolor%3A%20%23FFFFFF%3B%0Apadding%3A%202px%3B%0Aborder%3A%201px%20solid%20%23DDDDDD%3B%0Aborder%2Dradius%3A%203px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Amargin%3A%200%205px%3B%0A%7D%0Ah1%20%7B%0Amargin%2Dtop%3A%200%3B%0Afont%2Dsize%3A%2035px%3B%0Aline%2Dheight%3A%2040px%3B%0A%7D%0Ah2%20%7B%0Aborder%2Dbottom%3A%204px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Apadding%2Dbottom%3A%202px%3B%0Afont%2Dsize%3A%20145%25%3B%0A%7D%0Ah3%20%7B%0Aborder%2Dbottom%3A%202px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Afont%2Dsize%3A%20120%25%3B%0A%7D%0Ah4%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23f7f7f7%3B%0Amargin%2Dleft%3A%208px%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Ah5%2C%20h6%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23ccc%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Aa%20%7B%0Acolor%3A%20%230033dd%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0Aa%3Ahover%20%7B%0Acolor%3A%20%236666ff%3B%20%7D%0Aa%3Avisited%20%7B%0Acolor%3A%20%23800080%3B%20%7D%0Aa%3Avisited%3Ahover%20%7B%0Acolor%3A%20%23BB00BB%3B%20%7D%0Aa%5Bhref%5E%3D%22http%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0Aa%5Bhref%5E%3D%22https%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0A%0Acode%20%3E%20span%2Ekw%20%7B%20color%3A%20%23555%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Edt%20%7B%20color%3A%20%23902000%3B%20%7D%20%0Acode%20%3E%20span%2Edv%20%7B%20color%3A%20%2340a070%3B%20%7D%20%0Acode%20%3E%20span%2Ebn%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Efl%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Ech%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Est%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Eco%20%7B%20color%3A%20%23888888%3B%20font%2Dstyle%3A%20italic%3B%20%7D%20%0Acode%20%3E%20span%2Eot%20%7B%20color%3A%20%23007020%3B%20%7D%20%0Acode%20%3E%20span%2Eal%20%7B%20color%3A%20%23ff0000%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Efu%20%7B%20color%3A%20%23900%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%20code%20%3E%20span%2Eer%20%7B%20color%3A%20%23a61717%3B%20background%2Dcolor%3A%20%23e3d2d2%3B%20%7D%20%0A" rel="stylesheet" type="text/css" />
 
 </head>
 
@@ -79,429 +338,781 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="main-functions" class="section level2">
 <h2>Main Functions:</h2>
 <p>To explain the use of each function, we present a dataset to work with them:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">8</span>,<span class="dv">8</span>,<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">11</span>,<span class="dv">12</span>,<span class="dv">15</span>,<span class="dv">20</span>,<span class="dv">22</span>,<span class="dv">25</span>)
-<span class="kw">plot</span>(data); </code></pre></div>
-<p><img src="data:image/png;base64,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" /><!-- --></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>data &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">8</span>,<span class="dv">8</span>,<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">11</span>,<span class="dv">12</span>,<span class="dv">15</span>,<span class="dv">20</span>,<span class="dv">22</span>,<span class="dv">25</span>)</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="kw">plot</span>(data); </span></code></pre></div>
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASAAAAEgCAMAAAAjXV6yAAAAV1BMVEUAAAAAADoAAGYAOpAAZrY6AAA6ADo6AGY6Ojo6kNtmAABmADpmZmZmtrZmtv+QOgCQkGaQ2/+2ZgC2/7a2///bkDrb/9vb////tmb/25D//7b//9v///+6LNXiAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAGsElEQVR4nO2dAXebNhRGaZNus7vFLatXx/H//51DgOOAgU8CCT3ie8+JT5pKevY94glhCYoLTFLkfgPWQZAAQQIECRAkQJAAQQIECRAkQJAAQQIECRAkQJAAQQIECRAkQJAAQQIECRAkQJAAQQIECRAkQJAAQQIECRAkQJAAQQIECRAkQJAAQQIECRAkQJAAQQIECRAkQJAAQQIECRAkQJAAQQIECRAkQJAAQQIECRAkQJAAQQIECRAkQJAAQQIECRAkQJAAQQIECRAkQJAAQQIECRAkQJAAQQIECRAkCBF03u+q11NRFF9/pXo/5ggWdHz67X57SfaOjBEqqFVTa3oIQgW9fqsFnR7mIIvcg4rNkEaQa/n5ck3XC5vLQ+smiaBL7ejLz2ogG/FjX1Dx4ce7QuT4limurysLCj+0M5Fa0LFS0CTpkVHswQUdq/xz3rssvVVBaXPQ22FXv1ZD/GYFJR3FrhOM8un3dgW1JOxBFeUzgga5aqnOhhA0yLEZw6q+hKDEcXODIAGCutyd4yOow/2pIYI+Unx47fzJu27kt2INBAkQpCAHKRjFQkGQAEGOiUvACLpMXzlE0ODg3v9P71YWvxeL32pYEpSquUUgSEEOUjCKzQdBAgQJECRAkABBAgQJECRAkCDR8he5FQFBYisCgtRC8oDmsjJDULNMfGonj8dWhM8syC2se74KGOSxe5D79Ce3PHN8H89WtiL4XNicI+jl8vrnr/pnnC1sRZi6TtYp5N1ajVuhef7+UwiKFjcdk1dae6W8m3O4FZrlbt5WOUsX7ZMJupTPE8tXw5vLRTpBMTAgKFUOcvnHMbHZ8nqmNHG2ZEFQqlGsFTS2ht4xujw6PG5uQgWVt74xNoI73g7PkeLmZn4PmuZUTG+Y/8SCVo6bmyST1Zhxc5Nkshozbm6STFZjxo1P2Gl8qslqtLjR8To97BYPK7jxyarfBKNfPqjgkslqeNzYrCBom5PVa+ZZQ1AM1hZ0yzzJc1AcVhbU6T0pRzGPeXrkuHEIPbD6NYMKNheaT198pmTL48ZhTUHXibrhUex2EL3/Fph5PrQVXPD6bfKyu5OlFDSYkOdeBp93ougorfagvptloWblINeFjrNy0BrfamQX1AxlC++P+KkFxWD1HLSksbgFszTXa/x+FJvfVvSCWZpLx1YFDXWSJKl/o4KG0kyEhDMSKW7BNZobdxPdEIK8QsUsuEZzCBqrdT/3JAf1Kt3NPRnFenWyXEmKWTBdcwjyqoOg6Uprz1E2JShNGhYhoxfM0lw6kghiv5iA/WKCx97t48H4fjFLWxH8oAcJEgmKu18sZ4dLNczH3C+W4/ywEzxuwejNZZlh9KLHLBi9OQSNFZm5aC4udgWlvlToiVlBnd7zCUexxc3lPbBumBNkI/PcsCbISOa5YUyQlcxzw7AgG2QVdP+VFoI+NjeUb4xknhsZBQ25sZJ5bpgTZA0ECazlIHMYG8XsYew8yB7ZBG2GTILCCA0e/GYjfDoEpW9iveAIilweQdErJGliveAIilweQdErJGliveAPJ2gLIEiAIAGCBAgSIEiAIAGCBAgSIEiAIAGCBAgSZBN029fgRXuL2VNReN4iq6kQGGWAbIJe/wi5F9h5X28vcjcx9LuRYVshLMoQ2QQF3W3v1GxybG5EV3p0iLbCwnv6ObIJOgb0+1Oxqz9ps1lt6sEWvQpBUYbJJqj8q5h+REWXRlB9wPj1iqZUYJQBcgk6792WvNL7vdeft0k/fkmorhAaZYC8w7x/ipgnKDTKAHkF+T+DYeYhFhhlgMyCvEfhsCR96QpaMtbnEtR81sBDzH+Y7xjd5iFWf8zAJB1wongdxcKiDJDvEHMPpPLPDW0vOHpPNdoKYVEGYLIqQJAAQQIECRAkQJAAQQIECRAkQJAAQQIECRAkQJAAQQIECRAkQJAAQQIECRAkQJAAQQIECRAkQJAAQQJ7gu4WJyx8PvdCECRAkMCkoPP+n32zasUtd/nhBB2b1apuddnoEweSYFRQ5cQ9lrusfJyK9h+v33b1GrOxR1akwaigXb18rllBV7Z/qNdEnb7++33VI86ooJf6+UHv6+6aNFT7KhdtTQnHtKDju6D2zmwvbpfBohV1wZgW1OtBjrfD34v3pwRhWlC7Lrr9Q83x6b/DmoOYbUH14PU+ijXZ+iXCFqcQbAvqngdVYspqiH87rJmm7QkyBoIECBIgSIAgAYIECBIgSIAgAYIECBIgSIAgAYIECBIgSIAgAYIECBIgSIAgAYIECBIgSPA/b+zVW21u8isAAAAASUVORK5CYII=" /><!-- --></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>data2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">11</span>,<span class="dv">20</span>,<span class="dv">22</span>,<span class="dv">22</span>,<span class="dv">24</span>,<span class="dv">25</span>)</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="kw">plot</span>(data2);</span></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a></span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="co">#Binomial variables</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a>n =<span class="st"> </span><span class="dv">3</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a>x =<span class="st"> </span><span class="dv">2</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a>p =<span class="st"> </span><span class="fl">0.7</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a>    </span>
+<span id="cb3-7"><a href="#cb3-7"></a><span class="co">#Poisson variables</span></span>
+<span id="cb3-8"><a href="#cb3-8"></a>lam =<span class="st"> </span><span class="dv">2</span></span>
+<span id="cb3-9"><a href="#cb3-9"></a>k =<span class="st"> </span><span class="dv">3</span></span>
+<span id="cb3-10"><a href="#cb3-10"></a></span>
+<span id="cb3-11"><a href="#cb3-11"></a><span class="co">#Normal variables</span></span>
+<span id="cb3-12"><a href="#cb3-12"></a>nor =<span class="st"> </span><span class="fl">0.1</span></span>
+<span id="cb3-13"><a href="#cb3-13"></a></span>
+<span id="cb3-14"><a href="#cb3-14"></a><span class="co">#T-Student variables</span></span>
+<span id="cb3-15"><a href="#cb3-15"></a>xt =<span class="st"> </span><span class="dv">290</span> </span>
+<span id="cb3-16"><a href="#cb3-16"></a>ut =<span class="st"> </span><span class="dv">310</span></span>
+<span id="cb3-17"><a href="#cb3-17"></a>st =<span class="st"> </span><span class="dv">50</span></span>
+<span id="cb3-18"><a href="#cb3-18"></a>nt =<span class="st"> </span><span class="dv">16</span></span></code></pre></div>
 <p>The arithmetic mean calculus function:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean_</span>(data)
-<span class="co">#&gt; [1] 9.823529</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">mean_</span>(data)</span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="co">#&gt; [1] 9.823529</span></span></code></pre></div>
 <p>The geometric mean calculus function:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">geometricMean_</span>(data)
-<span class="co">#&gt; [1] 6.911414</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">geometricMean_</span>(data)</span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="co">#&gt; [1] 6.911414</span></span></code></pre></div>
 <p>The mode calculus function:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mode_</span>(data)
-<span class="co">#&gt; Factor appears  3  times in the vector.</span>
-<span class="co">#&gt; Unique mode</span>
-<span class="co">#&gt; [1] 8</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">mode_</span>(data)</span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="co">#&gt; Factor appears  3  times in the vector.</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="co">#&gt; Unique mode</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="co">#&gt; [1] 8</span></span></code></pre></div>
 <p>The median calculus function:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">median_</span>(data)
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Sorted vector: 1 1 2 3 4 7 8 8 8 10 10 11 12 15 20 22 25</span>
-<span class="co">#&gt; [1] 8</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="kw">median_</span>(data)</span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="co">#&gt; </span></span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="co">#&gt; Sorted vector: 1 1 2 3 4 7 8 8 8 10 10 11 12 15 20 22 25</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a><span class="co">#&gt; [1] 8</span></span></code></pre></div>
 <p>The standard deviation calculus function:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">standardDeviation_</span>(data)
-<span class="co">#&gt; [1] 6.989364</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="kw">standardDeviation_</span>(data)</span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="co">#&gt; [1] 6.989364</span></span></code></pre></div>
 <p>The average absolute deviation calculus function:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">averageDeviation_</span>(data)
-<span class="co">#&gt; [1] 5.460208</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="kw">averageDeviation_</span>(data)</span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="co">#&gt; [1] 5.460208</span></span></code></pre></div>
 <p>The variance calculus function:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">variance_</span>(data)
-<span class="co">#&gt; [1] 48.85121</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="kw">variance_</span>(data)</span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="co">#&gt; [1] 51.90441</span></span></code></pre></div>
 <p>The quartiles calculus function:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">quartile_</span>(data)
-<span class="co">#&gt;    Q1    Q2    Q3 </span>
-<span class="co">#&gt;  4.25  8.50 12.75</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="kw">quartile_</span>(data)</span>
+<span id="cb11-2"><a href="#cb11-2"></a><span class="co">#&gt; </span></span>
+<span id="cb11-3"><a href="#cb11-3"></a><span class="co">#&gt; Sorted vector: 1 1 2 3 4 7 8 8 8 </span></span>
+<span id="cb11-4"><a href="#cb11-4"></a><span class="co">#&gt; </span></span>
+<span id="cb11-5"><a href="#cb11-5"></a><span class="co">#&gt; </span></span>
+<span id="cb11-6"><a href="#cb11-6"></a><span class="co">#&gt; Sorted vector: 1 1 2 3 4 7 8 8 8 10 10 11 12 15 20 22 25 </span></span>
+<span id="cb11-7"><a href="#cb11-7"></a><span class="co">#&gt; </span></span>
+<span id="cb11-8"><a href="#cb11-8"></a><span class="co">#&gt; </span></span>
+<span id="cb11-9"><a href="#cb11-9"></a><span class="co">#&gt; Sorted vector: 8 10 10 11 12 15 20 22 25</span></span>
+<span id="cb11-10"><a href="#cb11-10"></a><span class="co">#&gt; Q0 Q1 Q2 Q3 Q4 </span></span>
+<span id="cb11-11"><a href="#cb11-11"></a><span class="co">#&gt;  1  4  8 12 25</span></span></code></pre></div>
 <p>The percentile calculus function:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">percentile_</span>(data)
-<span class="co">#&gt; Percentile[ 10 ] =  1 </span>
-<span class="co">#&gt; Percentile[ 20 ] =  3 </span>
-<span class="co">#&gt; Percentile[ 30 ] =  7 </span>
-<span class="co">#&gt; Percentile[ 40 ] =  8 </span>
-<span class="co">#&gt; Percentile[ 50 ] =  8 </span>
-<span class="co">#&gt; Percentile[ 60 ] =  10 </span>
-<span class="co">#&gt; Percentile[ 70 ] =  11 </span>
-<span class="co">#&gt; Percentile[ 80 ] =  15 </span>
-<span class="co">#&gt; Percentile[ 90 ] =  22 </span>
-<span class="co">#&gt; Percentile[ 100 ] =  25</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="kw">percentile_</span>(data,<span class="fl">0.3</span>)</span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="co">#&gt; Percentile  30 % =  7</span></span></code></pre></div>
 <p>The absolute frecuency calculus function:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">frecuency_abs</span>(data,<span class="dv">1</span>)
-<span class="co">#&gt; [1] 2</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="kw">frecuency_abs</span>(data,<span class="dv">1</span>)</span>
+<span id="cb13-2"><a href="#cb13-2"></a><span class="co">#&gt; [1] 2</span></span></code></pre></div>
 <p>The relative frecuency calculus function:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">frecuency_relative</span>(data,<span class="dv">20</span>)
-<span class="co">#&gt; [1] 0.05882353</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="kw">frecuency_relative</span>(data,<span class="dv">20</span>)</span>
+<span id="cb14-2"><a href="#cb14-2"></a><span class="co">#&gt; [1] 0.05882353</span></span></code></pre></div>
 <p>The absolute acumulated frecuency calculus function:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">frecuency_absolute_acum</span>(data,<span class="dv">1</span>)
-<span class="co">#&gt; [1] 2</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="kw">frecuency_absolute_acum</span>(data,<span class="dv">1</span>)</span>
+<span id="cb15-2"><a href="#cb15-2"></a><span class="co">#&gt; [1] 2</span></span></code></pre></div>
 <p>The relative acumulated frecuency calculus function:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">frecuency_relative_acum</span>(data,<span class="dv">20</span>)
-<span class="co">#&gt; [1] 0.8823529</span></code></pre></div>
-</div>
-<div id="explained-functions" class="section level2">
-<h2>Explained Functions:</h2>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="kw">frecuency_relative_acum</span>(data,<span class="dv">20</span>)</span>
+<span id="cb16-2"><a href="#cb16-2"></a><span class="co">#&gt; [1] 0.8823529</span></span></code></pre></div>
+<p>The covariance calculus function:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="kw">covariance_</span>(data, data2)</span>
+<span id="cb17-2"><a href="#cb17-2"></a><span class="co">#&gt; [1] 52.79585</span></span></code></pre></div>
+<p>The harmonic mean calculus funtion:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="kw">harmonicMean_</span>(data)</span>
+<span id="cb18-2"><a href="#cb18-2"></a><span class="co">#&gt; </span></span>
+<span id="cb18-3"><a href="#cb18-3"></a><span class="co">#&gt; Sorted vector: 1 1 2 3 4 7 8 8 8 10 10 11 12 15 20 22 25</span></span>
+<span id="cb18-4"><a href="#cb18-4"></a><span class="co">#&gt; [1] 4.069367</span></span></code></pre></div>
+<p>The pearson correlaction calculus funtion:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="kw">pearson_</span>(data,data2)</span>
+<span id="cb19-2"><a href="#cb19-2"></a><span class="co">#&gt; [1] 0.9510292</span></span></code></pre></div>
+<p>The coefficient of variation calculus funtion:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="kw">cv_</span>(data)</span>
+<span id="cb20-2"><a href="#cb20-2"></a><span class="co">#&gt; [1] 0.7114922</span></span></code></pre></div>
+<p>The Laplace rule calculus funtion:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="kw">laplace_</span>(data,data2)</span>
+<span id="cb21-2"><a href="#cb21-2"></a><span class="co">#&gt; [1] 1</span></span></code></pre></div>
+<p>The binomial distribution calculus funtion:</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="kw">binomial_</span>(n,x,p)</span>
+<span id="cb22-2"><a href="#cb22-2"></a><span class="co">#&gt; [1] 0.441</span></span></code></pre></div>
+<p>The poisson distribution calculus funtion:</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="kw">poisson_</span>(k,lam)</span>
+<span id="cb23-2"><a href="#cb23-2"></a><span class="co">#&gt; [1] 0.180447</span></span></code></pre></div>
+<p>The normal distribution calculus funtion:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="kw">normal_</span>(nor)</span>
+<span id="cb24-2"><a href="#cb24-2"></a><span class="co">#&gt; [1] 0.3969525</span></span></code></pre></div>
+<p>The tstudent distribution calculus funtion:</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="kw">tstudent_</span>(xt,ut,st,nt)</span>
+<span id="cb25-2"><a href="#cb25-2"></a><span class="co">#&gt; [1] -1.6</span></span></code></pre></div>
+<p>The chisquared distribution calculus funtion:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="kw">chisquared_</span>(data,data2)</span>
+<span id="cb26-2"><a href="#cb26-2"></a><span class="co">#&gt; [1] 9.118615</span></span></code></pre></div>
+<p>The fisher distribution calculus funtion:</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="kw">fisher_</span>(data,data2)</span>
+<span id="cb27-2"><a href="#cb27-2"></a><span class="co">#&gt; [1] 0.03078098</span></span></code></pre></div>
+<p>##Explained Functions:</p>
 <p>For each main function, there are an explained function to see the calculus process:</p>
 <ul>
 <li>arithmetic mean:</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">explain.mean</span>(data)
-<span class="co">#&gt; </span>
-<span class="co">#&gt; __MEAN CALCULUS__ </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Formula -&gt; (x1 + x2 +..+xn) / num_elements</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; The mean of a dataset is calculated by adding each element of the dataset and dividing the result by the number of elements in the dataset. We'll give the user an example for better comprension.</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; __Use Example__</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; First of all, we need to know the content of the dataset/vector of numbers</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; The content of the vector is: 1 ,1 ,2 ,3 ,4 ,7 ,8 ,8 ,8 ,10 ,10 ,11 ,12 ,15 ,20 ,22 ,25</span>
-<span class="co">#&gt; Now we need to add each element of the vector/dataset</span>
-<span class="co">#&gt; The sum of the elements is:  167 </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Next step, get the number of elements that we've examined</span>
-<span class="co">#&gt; The length of the vector is  17 elements</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Formula applied -&gt;  167 / 17  =  9.82352941176471</span>
-<span class="co">#&gt; Now try by your own! :D</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Use interactive.mean function to practice.</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="kw">explain.mean</span>(data)</span>
+<span id="cb28-2"><a href="#cb28-2"></a><span class="co">#&gt; </span></span>
+<span id="cb28-3"><a href="#cb28-3"></a><span class="co">#&gt; __MEAN CALCULUS__ </span></span>
+<span id="cb28-4"><a href="#cb28-4"></a><span class="co">#&gt; </span></span>
+<span id="cb28-5"><a href="#cb28-5"></a><span class="co">#&gt; The mean of a dataset is calculated by the sum of the values divided by the number of values. We&#39;ll give the user an example for better comprension.</span></span>
+<span id="cb28-6"><a href="#cb28-6"></a><span class="co">#&gt; </span></span>
+<span id="cb28-7"><a href="#cb28-7"></a><span class="co">#&gt; Formula -&gt; (x1 + x2 +..+xn) / num_elements</span></span>
+<span id="cb28-8"><a href="#cb28-8"></a><span class="co">#&gt; xn: valor of elements to dataset</span></span>
+<span id="cb28-9"><a href="#cb28-9"></a><span class="co">#&gt; </span></span>
+<span id="cb28-10"><a href="#cb28-10"></a><span class="co">#&gt; __Use Example__</span></span>
+<span id="cb28-11"><a href="#cb28-11"></a><span class="co">#&gt; </span></span>
+<span id="cb28-12"><a href="#cb28-12"></a><span class="co">#&gt; First of all, we need to know the content of the dataset/vector of numbers</span></span>
+<span id="cb28-13"><a href="#cb28-13"></a><span class="co">#&gt; </span></span>
+<span id="cb28-14"><a href="#cb28-14"></a><span class="co">#&gt; The content of the vector is: 1 ,1 ,2 ,3 ,4 ,7 ,8 ,8 ,8 ,10 ,10 ,11 ,12 ,15 ,20 ,22 ,25</span></span>
+<span id="cb28-15"><a href="#cb28-15"></a><span class="co">#&gt; Now we need to add each element of the vector/dataset</span></span>
+<span id="cb28-16"><a href="#cb28-16"></a><span class="co">#&gt; The sum of the elements is:  167 </span></span>
+<span id="cb28-17"><a href="#cb28-17"></a><span class="co">#&gt; </span></span>
+<span id="cb28-18"><a href="#cb28-18"></a><span class="co">#&gt; Next step, get the number of elements that we&#39;ve examined</span></span>
+<span id="cb28-19"><a href="#cb28-19"></a><span class="co">#&gt; The length of the vector is  17 elements</span></span>
+<span id="cb28-20"><a href="#cb28-20"></a><span class="co">#&gt; </span></span>
+<span id="cb28-21"><a href="#cb28-21"></a><span class="co">#&gt; Formula applied -&gt;  167 / 17  =  9.82352941176471</span></span>
+<span id="cb28-22"><a href="#cb28-22"></a><span class="co">#&gt; Now try by your own! :D</span></span>
+<span id="cb28-23"><a href="#cb28-23"></a><span class="co">#&gt; </span></span>
+<span id="cb28-24"><a href="#cb28-24"></a><span class="co">#&gt; Use interactive.mean function to practice.</span></span></code></pre></div>
 <ul>
 <li>geometric mean:</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">explain.geometricMean</span>(data)
-<span class="co">#&gt; </span>
-<span class="co">#&gt; __GEOMETRIC MEAN CALCULUS__ </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Formula -&gt; (x1 * x2 *..* xn)^( 1 / num_elements</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; The geometric mean of a dataset is calculated by multiplying each element of the dataset and raising the result to 1 divided by the number of elements in the dataset. We'll give the user an example for better comprension.</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; __Use Example__</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; First of all, we need to know the content of the dataset/vector of numbers</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; The content of the vector is: 1 ,1 ,2 ,3 ,4 ,7 ,8 ,8 ,8 ,10 ,10 ,11 ,12 ,15 ,20 ,22 ,25</span>
-<span class="co">#&gt; Now we need to multiply each element of the vector/dataset</span>
-<span class="co">#&gt; The product of the elements is:  1.87342848e+14 </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Next step, get the number of elements that we've examined</span>
-<span class="co">#&gt; The length of the vector is  17 elements</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Formula applied -&gt; ( 1.87342848e+14 ) ^ ( 1 / 17 ) =  6.91141369632174</span>
-<span class="co">#&gt; Now try by your own! :D</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Use interactive.geometricMean function to practice.</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="kw">explain.geometricMean</span>(data)</span>
+<span id="cb29-2"><a href="#cb29-2"></a><span class="co">#&gt; </span></span>
+<span id="cb29-3"><a href="#cb29-3"></a><span class="co">#&gt; __GEOMETRIC MEAN CALCULUS__ </span></span>
+<span id="cb29-4"><a href="#cb29-4"></a><span class="co">#&gt; </span></span>
+<span id="cb29-5"><a href="#cb29-5"></a><span class="co">#&gt; The geometric mean of a dataset is calculated by multiplying each element of the dataset and raising the result to 1 divided by the number of elements in the dataset (the nth root). </span></span>
+<span id="cb29-6"><a href="#cb29-6"></a><span class="co">#&gt;     We&#39;ll give the user an example for better comprension.</span></span>
+<span id="cb29-7"><a href="#cb29-7"></a><span class="co">#&gt; </span></span>
+<span id="cb29-8"><a href="#cb29-8"></a><span class="co">#&gt; Formula -&gt; (x1 * x2 *..* xn)^( 1 / num_elements)</span></span>
+<span id="cb29-9"><a href="#cb29-9"></a><span class="co">#&gt; xn: valor of elements to dataset</span></span>
+<span id="cb29-10"><a href="#cb29-10"></a><span class="co">#&gt; </span></span>
+<span id="cb29-11"><a href="#cb29-11"></a><span class="co">#&gt; __Use Example__</span></span>
+<span id="cb29-12"><a href="#cb29-12"></a><span class="co">#&gt; </span></span>
+<span id="cb29-13"><a href="#cb29-13"></a><span class="co">#&gt; First of all, we need to know the content of the dataset/vector of numbers</span></span>
+<span id="cb29-14"><a href="#cb29-14"></a><span class="co">#&gt; </span></span>
+<span id="cb29-15"><a href="#cb29-15"></a><span class="co">#&gt; The content of the vector is: 1 ,1 ,2 ,3 ,4 ,7 ,8 ,8 ,8 ,10 ,10 ,11 ,12 ,15 ,20 ,22 ,25</span></span>
+<span id="cb29-16"><a href="#cb29-16"></a><span class="co">#&gt; Now we need to multiply each element of the vector/dataset</span></span>
+<span id="cb29-17"><a href="#cb29-17"></a><span class="co">#&gt; The product of the elements is:  1.87342848e+14 </span></span>
+<span id="cb29-18"><a href="#cb29-18"></a><span class="co">#&gt; </span></span>
+<span id="cb29-19"><a href="#cb29-19"></a><span class="co">#&gt; Next step, get the number of elements that we&#39;ve examined</span></span>
+<span id="cb29-20"><a href="#cb29-20"></a><span class="co">#&gt; The length of the vector is  17 elements</span></span>
+<span id="cb29-21"><a href="#cb29-21"></a><span class="co">#&gt; </span></span>
+<span id="cb29-22"><a href="#cb29-22"></a><span class="co">#&gt; Formula applied -&gt; ( 1.87342848e+14 ) ^ ( 1 / 17 ) =  6.91141369632174</span></span>
+<span id="cb29-23"><a href="#cb29-23"></a><span class="co">#&gt; Now try by your own! :D</span></span>
+<span id="cb29-24"><a href="#cb29-24"></a><span class="co">#&gt; </span></span>
+<span id="cb29-25"><a href="#cb29-25"></a><span class="co">#&gt; Use interactive.geometricMean function to practice.</span></span></code></pre></div>
 <ul>
 <li>mode:</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">explain.mode</span>(data)
-<span class="co">#&gt; </span>
-<span class="co">#&gt; __MODE CALCULUS__ </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Formula -&gt; Most repeated value of [Data]</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; The mode of a dataset is calculated by looking for the most repeated value in the dataset. If in a group there are two or several scores with the same frequency and that frequency is the maximum, the distribution is bimodal or multimodal, that is, it has several modes.</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; __Use Example__</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; First step : search the most repeated value</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; The content of the vector is: 1 ,1 ,2 ,3 ,4 ,7 ,8 ,8 ,8 ,10 ,10 ,11 ,12 ,15 ,20 ,22 ,25</span>
-<span class="co">#&gt; Factor  8  appears  3  times in the vector.</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Second step : check the dataset looking for a value with the same maximum frequency</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; If there are only 1 unique most repeated value, it is the mode.</span>
-<span class="co">#&gt; If there are 2 values repeated with the same maximum frequency each value represents the mode. Bimodal dataset</span>
-<span class="co">#&gt; If there are more than 2 values repeated with the same maximum frequency, it is a Multimodal dataset</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Now try by your own! :D</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Use interactive.mode function to practice.</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="kw">explain.mode</span>(data)</span>
+<span id="cb30-2"><a href="#cb30-2"></a><span class="co">#&gt; </span></span>
+<span id="cb30-3"><a href="#cb30-3"></a><span class="co">#&gt; __MODE CALCULUS__ </span></span>
+<span id="cb30-4"><a href="#cb30-4"></a><span class="co">#&gt; </span></span>
+<span id="cb30-5"><a href="#cb30-5"></a><span class="co">#&gt; The mode of a dataset is calculated by looking for the most repeated value in the dataset. If in a group there are two or several scores with the same frequency and that frequency is the maximum, the distribution is bimodal or multimodal, that is, it has several modes.</span></span>
+<span id="cb30-6"><a href="#cb30-6"></a><span class="co">#&gt; </span></span>
+<span id="cb30-7"><a href="#cb30-7"></a><span class="co">#&gt; Formula -&gt; Most repeated value of [Data]</span></span>
+<span id="cb30-8"><a href="#cb30-8"></a><span class="co">#&gt; </span></span>
+<span id="cb30-9"><a href="#cb30-9"></a><span class="co">#&gt; __Use Example__</span></span>
+<span id="cb30-10"><a href="#cb30-10"></a><span class="co">#&gt; </span></span>
+<span id="cb30-11"><a href="#cb30-11"></a><span class="co">#&gt; First step : search the most repeated value</span></span>
+<span id="cb30-12"><a href="#cb30-12"></a><span class="co">#&gt; </span></span>
+<span id="cb30-13"><a href="#cb30-13"></a><span class="co">#&gt; The content of the vector is: 1 ,1 ,2 ,3 ,4 ,7 ,8 ,8 ,8 ,10 ,10 ,11 ,12 ,15 ,20 ,22 ,25</span></span>
+<span id="cb30-14"><a href="#cb30-14"></a><span class="co">#&gt; Factor  8  appears  3  times in the vector.</span></span>
+<span id="cb30-15"><a href="#cb30-15"></a><span class="co">#&gt; </span></span>
+<span id="cb30-16"><a href="#cb30-16"></a><span class="co">#&gt; Second step : check the dataset looking for a value with the same maximum frequency</span></span>
+<span id="cb30-17"><a href="#cb30-17"></a><span class="co">#&gt; </span></span>
+<span id="cb30-18"><a href="#cb30-18"></a><span class="co">#&gt; If there are only 1 unique most repeated value, it is the mode.</span></span>
+<span id="cb30-19"><a href="#cb30-19"></a><span class="co">#&gt; If there are 2 values repeated with the same maximum frequency each value represents the mode. Bimodal dataset</span></span>
+<span id="cb30-20"><a href="#cb30-20"></a><span class="co">#&gt; If there are more than 2 values repeated with the same maximum frequency, it is a Multimodal dataset</span></span>
+<span id="cb30-21"><a href="#cb30-21"></a><span class="co">#&gt; </span></span>
+<span id="cb30-22"><a href="#cb30-22"></a><span class="co">#&gt; Now try by your own! :D</span></span>
+<span id="cb30-23"><a href="#cb30-23"></a><span class="co">#&gt; </span></span>
+<span id="cb30-24"><a href="#cb30-24"></a><span class="co">#&gt; Use interactive.mode function to practice.</span></span></code></pre></div>
 <ul>
 <li>median:</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">explain.median</span>(data)
-<span class="co">#&gt; </span>
-<span class="co">#&gt; __MEDIAN CALCULUS__ </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Formula -&gt; 1/2(n+1) where n -&gt; vector size</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; The median of a dataset is the value in the middle of the sorted data. It's important to know that the data must be sorted. If the dataset has a pair number of elements, we should select both in the middle to add each other and get divided by two. If the dataset has a no pair number of elements, we should select the one in the middle.</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; __Use Example__</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; First step : identify if the vector has a pair number of elements</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; The content of the vector is: 1 ,1 ,2 ,3 ,4 ,7 ,8 ,8 ,8 ,10 ,10 ,11 ,12 ,15 ,20 ,22 ,25</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Second step: depending of the number of elements</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; It has a ODD number of elements ( 17 )</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; We take the 'n/2' approaching up element</span>
-<span class="co">#&gt; The result is :  8</span>
-<span class="co">#&gt; Now try by your own! :D</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Use interactive.median function to practice.</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="kw">explain.median</span>(data)</span>
+<span id="cb31-2"><a href="#cb31-2"></a><span class="co">#&gt; </span></span>
+<span id="cb31-3"><a href="#cb31-3"></a><span class="co">#&gt; __MEDIAN CALCULUS__ </span></span>
+<span id="cb31-4"><a href="#cb31-4"></a><span class="co">#&gt; </span></span>
+<span id="cb31-5"><a href="#cb31-5"></a><span class="co">#&gt; The median of a dataset is the value in the middle of the sorted data. It&#39;s important to know that the data must be sorted. If the dataset has a pair number of elements, we should select both in the middle to add each other and get divided by two. If the dataset has a no pair number of elements, we should select the one in the middle.</span></span>
+<span id="cb31-6"><a href="#cb31-6"></a><span class="co">#&gt; </span></span>
+<span id="cb31-7"><a href="#cb31-7"></a><span class="co">#&gt; Formula -&gt; 1/2(n+1) where n -&gt; vector size</span></span>
+<span id="cb31-8"><a href="#cb31-8"></a><span class="co">#&gt; </span></span>
+<span id="cb31-9"><a href="#cb31-9"></a><span class="co">#&gt; __Use Example__</span></span>
+<span id="cb31-10"><a href="#cb31-10"></a><span class="co">#&gt; </span></span>
+<span id="cb31-11"><a href="#cb31-11"></a><span class="co">#&gt; First step : identify if the vector has a pair number of elements</span></span>
+<span id="cb31-12"><a href="#cb31-12"></a><span class="co">#&gt; </span></span>
+<span id="cb31-13"><a href="#cb31-13"></a><span class="co">#&gt; The content of the vector is: 1 ,1 ,2 ,3 ,4 ,7 ,8 ,8 ,8 ,10 ,10 ,11 ,12 ,15 ,20 ,22 ,25</span></span>
+<span id="cb31-14"><a href="#cb31-14"></a><span class="co">#&gt; </span></span>
+<span id="cb31-15"><a href="#cb31-15"></a><span class="co">#&gt; Second step: depending of the number of elements</span></span>
+<span id="cb31-16"><a href="#cb31-16"></a><span class="co">#&gt; </span></span>
+<span id="cb31-17"><a href="#cb31-17"></a><span class="co">#&gt; It has a ODD number of elements ( 17 )</span></span>
+<span id="cb31-18"><a href="#cb31-18"></a><span class="co">#&gt; </span></span>
+<span id="cb31-19"><a href="#cb31-19"></a><span class="co">#&gt; We take the &#39;n/2&#39; approaching up element</span></span>
+<span id="cb31-20"><a href="#cb31-20"></a><span class="co">#&gt; The result is :  8</span></span>
+<span id="cb31-21"><a href="#cb31-21"></a><span class="co">#&gt; Now try by your own! :D</span></span>
+<span id="cb31-22"><a href="#cb31-22"></a><span class="co">#&gt; </span></span>
+<span id="cb31-23"><a href="#cb31-23"></a><span class="co">#&gt; Use interactive.median function to practice.</span></span></code></pre></div>
 <ul>
 <li>standard deviation:</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">explain.standardDeviation</span>(data)
-<span class="co">#&gt; </span>
-<span class="co">#&gt; __STANDARD DEVIATION CALCULUS__ </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Formula -&gt;  square_root ((Summation(each_element - mean)^2) / num_elements)</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; The standard deviation of a dataset is calculated by adding the square of the diference between each element and the mean of the dataset. This sum will be dividing by the number of elements in the dataset and finally making the square root on the result. We'll give the user an example for better comprension.</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; __Use Example__</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; First of all, we need to know the content of the dataset/vector of numbers</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; The content of the vector is: 1 ,1 ,2 ,3 ,4 ,7 ,8 ,8 ,8 ,10 ,10 ,11 ,12 ,15 ,20 ,22 ,25</span>
-<span class="co">#&gt; The mean of dataset is... 9.82352941176471</span>
-<span class="co">#&gt; The square of the diference between each number and the mean of dataset is: 77.85467 ,77.85467 ,61.20761 ,46.56055 ,33.91349 ,7.972318 ,3.32526 ,3.32526 ,3.32526 ,0.03114187 ,0.03114187 ,1.384083 ,4.737024 ,26.79585 ,103.5606 ,148.2664 ,230.3253</span>
-<span class="co">#&gt; Now we need to add each element of the vector/dataset</span>
-<span class="co">#&gt; The sum of the squares is:  830.470588235294 </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Next step, get the number of elements that we've examined</span>
-<span class="co">#&gt; The length of the vector is  17 elements</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Formula applied -&gt; ( 830.4706 / 17 ) ^ (1/2) =  6.98936413936664</span>
-<span class="co">#&gt; Now try by your own! :D</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Use interactive.standardDeviation function to practice.</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a><span class="kw">explain.standardDeviation</span>(data)</span>
+<span id="cb32-2"><a href="#cb32-2"></a><span class="co">#&gt; </span></span>
+<span id="cb32-3"><a href="#cb32-3"></a><span class="co">#&gt; __STANDARD DEVIATION CALCULUS__ </span></span>
+<span id="cb32-4"><a href="#cb32-4"></a><span class="co">#&gt; </span></span>
+<span id="cb32-5"><a href="#cb32-5"></a><span class="co">#&gt; The standard deviation of a dataset is calculated by adding the square of the diference between each element and the mean of the dataset. This sum will be dividing by the number of elements in the dataset and finally making the square root on the result. We&#39;ll give the user an example for better comprension.</span></span>
+<span id="cb32-6"><a href="#cb32-6"></a><span class="co">#&gt; </span></span>
+<span id="cb32-7"><a href="#cb32-7"></a><span class="co">#&gt; Formula -&gt;  square_root ((Summation(each_element - Mean)^2) / num_elements)</span></span>
+<span id="cb32-8"><a href="#cb32-8"></a><span class="co">#&gt; </span></span>
+<span id="cb32-9"><a href="#cb32-9"></a><span class="co">#&gt; Mean -&gt; (x1 + x2 +..+xn) / n</span></span>
+<span id="cb32-10"><a href="#cb32-10"></a><span class="co">#&gt; </span></span>
+<span id="cb32-11"><a href="#cb32-11"></a><span class="co">#&gt; __Use Example__</span></span>
+<span id="cb32-12"><a href="#cb32-12"></a><span class="co">#&gt; </span></span>
+<span id="cb32-13"><a href="#cb32-13"></a><span class="co">#&gt; First of all, we need to know the content of the dataset/vector of numbers</span></span>
+<span id="cb32-14"><a href="#cb32-14"></a><span class="co">#&gt; </span></span>
+<span id="cb32-15"><a href="#cb32-15"></a><span class="co">#&gt; The content of the vector is: 1 ,1 ,2 ,3 ,4 ,7 ,8 ,8 ,8 ,10 ,10 ,11 ,12 ,15 ,20 ,22 ,25</span></span>
+<span id="cb32-16"><a href="#cb32-16"></a><span class="co">#&gt; The mean of dataset is... 9.82352941176471</span></span>
+<span id="cb32-17"><a href="#cb32-17"></a><span class="co">#&gt; The square of the diference between each number and the mean of dataset is: 77.85467 ,77.85467 ,61.20761 ,46.56055 ,33.91349 ,7.972318 ,3.32526 ,3.32526 ,3.32526 ,0.03114187 ,0.03114187 ,1.384083 ,4.737024 ,26.79585 ,103.5606 ,148.2664 ,230.3253</span></span>
+<span id="cb32-18"><a href="#cb32-18"></a><span class="co">#&gt; Now we need to add each element of the vector/dataset</span></span>
+<span id="cb32-19"><a href="#cb32-19"></a><span class="co">#&gt; The sum of the squares is:  830.470588235294 </span></span>
+<span id="cb32-20"><a href="#cb32-20"></a><span class="co">#&gt; </span></span>
+<span id="cb32-21"><a href="#cb32-21"></a><span class="co">#&gt; Next step, get the number of elements that we&#39;ve examined</span></span>
+<span id="cb32-22"><a href="#cb32-22"></a><span class="co">#&gt; The length of the vector is  17 elements</span></span>
+<span id="cb32-23"><a href="#cb32-23"></a><span class="co">#&gt; </span></span>
+<span id="cb32-24"><a href="#cb32-24"></a><span class="co">#&gt; Formula applied -&gt; ( 830.4706 / 17 ) ^ (1/2) =  6.98936413936664</span></span>
+<span id="cb32-25"><a href="#cb32-25"></a><span class="co">#&gt; Now try by your own! :D</span></span>
+<span id="cb32-26"><a href="#cb32-26"></a><span class="co">#&gt; </span></span>
+<span id="cb32-27"><a href="#cb32-27"></a><span class="co">#&gt; Use interactive.standardDeviation function to practice.</span></span></code></pre></div>
 <ul>
 <li>average absolute deviation:</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">explain.averageDeviation</span>(data)
-<span class="co">#&gt; </span>
-<span class="co">#&gt; __AVERAGE DEVIATION CALCULUS__ </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Formula -&gt;  (Summation(abs(each_element - mean))) / num_elements</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; The average deviation of a dataset is calculated by adding the absolute value of the diference between each element and the mean of the dataset. This sum will be dividing by the number of elements in the dataset. We'll give the user an example for better comprension.</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; __Use Example__</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; First of all, we need to know the content of the dataset/vector of numbers</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; The content of the vector is: 1 ,1 ,2 ,3 ,4 ,7 ,8 ,8 ,8 ,10 ,10 ,11 ,12 ,15 ,20 ,22 ,25</span>
-<span class="co">#&gt; The mean of dataset is... 9.82352941176471</span>
-<span class="co">#&gt; The absolute value of the diference between each number and the mean of dataset is: 8.823529 ,8.823529 ,7.823529 ,6.823529 ,5.823529 ,2.823529 ,1.823529 ,1.823529 ,1.823529 ,0.1764706 ,0.1764706 ,1.176471 ,2.176471 ,5.176471 ,10.17647 ,12.17647 ,15.17647</span>
-<span class="co">#&gt; Now we need to add each element of the vector/dataset</span>
-<span class="co">#&gt; The sum of the squares is:  92.8235294117647 </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Next step, get the number of elements that we've examined</span>
-<span class="co">#&gt; The length of the vector is  17 elements</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Formula applied -&gt;  92.82353 / 17  =  5.46020761245675</span>
-<span class="co">#&gt; Now try by your own! :D</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Use interactive.averageDeviation function to practice.</span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="kw">explain.averageDeviation</span>(data)</span>
+<span id="cb33-2"><a href="#cb33-2"></a><span class="co">#&gt; </span></span>
+<span id="cb33-3"><a href="#cb33-3"></a><span class="co">#&gt; __AVERAGE DEVIATION CALCULUS__ </span></span>
+<span id="cb33-4"><a href="#cb33-4"></a><span class="co">#&gt; </span></span>
+<span id="cb33-5"><a href="#cb33-5"></a><span class="co">#&gt; The average deviation of a dataset is calculated by adding the absolute value of the diference between each element and the mean of the dataset. This sum will be dividing by the number of elements in the dataset. We&#39;ll give the user an example for better comprension.</span></span>
+<span id="cb33-6"><a href="#cb33-6"></a><span class="co">#&gt; </span></span>
+<span id="cb33-7"><a href="#cb33-7"></a><span class="co">#&gt; Formula -&gt;  (Summation(abs(each_element - mean))) / num_elements</span></span>
+<span id="cb33-8"><a href="#cb33-8"></a><span class="co">#&gt; </span></span>
+<span id="cb33-9"><a href="#cb33-9"></a><span class="co">#&gt; Mean -&gt; (x1 + x2 +..+xn) / num_elements</span></span>
+<span id="cb33-10"><a href="#cb33-10"></a><span class="co">#&gt; </span></span>
+<span id="cb33-11"><a href="#cb33-11"></a><span class="co">#&gt; __Use Example__</span></span>
+<span id="cb33-12"><a href="#cb33-12"></a><span class="co">#&gt; </span></span>
+<span id="cb33-13"><a href="#cb33-13"></a><span class="co">#&gt; First of all, we need to know the content of the dataset/vector of numbers</span></span>
+<span id="cb33-14"><a href="#cb33-14"></a><span class="co">#&gt; </span></span>
+<span id="cb33-15"><a href="#cb33-15"></a><span class="co">#&gt; The content of the vector is: 1 ,1 ,2 ,3 ,4 ,7 ,8 ,8 ,8 ,10 ,10 ,11 ,12 ,15 ,20 ,22 ,25</span></span>
+<span id="cb33-16"><a href="#cb33-16"></a><span class="co">#&gt; The mean of dataset is... 9.82352941176471</span></span>
+<span id="cb33-17"><a href="#cb33-17"></a><span class="co">#&gt; The absolute value of the diference between each number and the mean of dataset is: 8.823529 ,8.823529 ,7.823529 ,6.823529 ,5.823529 ,2.823529 ,1.823529 ,1.823529 ,1.823529 ,0.1764706 ,0.1764706 ,1.176471 ,2.176471 ,5.176471 ,10.17647 ,12.17647 ,15.17647</span></span>
+<span id="cb33-18"><a href="#cb33-18"></a><span class="co">#&gt; Now we need to add each element of the vector/dataset</span></span>
+<span id="cb33-19"><a href="#cb33-19"></a><span class="co">#&gt; The sum of the squares is:  92.8235294117647 </span></span>
+<span id="cb33-20"><a href="#cb33-20"></a><span class="co">#&gt; </span></span>
+<span id="cb33-21"><a href="#cb33-21"></a><span class="co">#&gt; Next step, get the number of elements that we&#39;ve examined</span></span>
+<span id="cb33-22"><a href="#cb33-22"></a><span class="co">#&gt; The length of the vector is  17 elements</span></span>
+<span id="cb33-23"><a href="#cb33-23"></a><span class="co">#&gt; </span></span>
+<span id="cb33-24"><a href="#cb33-24"></a><span class="co">#&gt; Formula applied -&gt;  92.82353 / 17  =  5.46020761245675</span></span>
+<span id="cb33-25"><a href="#cb33-25"></a><span class="co">#&gt; Now try by your own! :D</span></span>
+<span id="cb33-26"><a href="#cb33-26"></a><span class="co">#&gt; </span></span>
+<span id="cb33-27"><a href="#cb33-27"></a><span class="co">#&gt; Use interactive.averageDeviation function to practice.</span></span></code></pre></div>
 <ul>
 <li>variance:</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">explain.variance</span>(data)
-<span class="co">#&gt; </span>
-<span class="co">#&gt; __VARIANCE CALCULUS__ </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Formula -&gt;  (Summation(each_element - mean)^2) / num_elements</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; The variance of a dataset is calculated by adding the square of the diference between each element and the mean of the dataset. This sum will be dividing by the number of elements in the dataset. We'll give the user an example for better comprension.</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; __Use Example__</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; First of all, we need to know the content of the dataset/vector of numbers</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; The content of the vector is: 1 ,1 ,2 ,3 ,4 ,7 ,8 ,8 ,8 ,10 ,10 ,11 ,12 ,15 ,20 ,22 ,25</span>
-<span class="co">#&gt; The mean of dataset is... 9.82352941176471</span>
-<span class="co">#&gt; The square of the diference between each number and the mean of dataset is: 77.85467 ,77.85467 ,61.20761 ,46.56055 ,33.91349 ,7.972318 ,3.32526 ,3.32526 ,3.32526 ,0.03114187 ,0.03114187 ,1.384083 ,4.737024 ,26.79585 ,103.5606 ,148.2664 ,230.3253</span>
-<span class="co">#&gt; Now we need to add each element of the vector/dataset</span>
-<span class="co">#&gt; The sum of the squares is:  830.470588235294 </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Next step, get the number of elements that we've examined</span>
-<span class="co">#&gt; The length of the vector is  17 elements</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Formula applied -&gt;  830.4706 / 17  =  48.8512110726644</span>
-<span class="co">#&gt; Now try by your own! :D</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Use interactive.variance function to practice.</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a><span class="kw">explain.variance</span>(data)</span>
+<span id="cb34-2"><a href="#cb34-2"></a><span class="co">#&gt; </span></span>
+<span id="cb34-3"><a href="#cb34-3"></a><span class="co">#&gt; __VARIANCE CALCULUS__ </span></span>
+<span id="cb34-4"><a href="#cb34-4"></a><span class="co">#&gt; </span></span>
+<span id="cb34-5"><a href="#cb34-5"></a><span class="co">#&gt; The variance of a dataset is calculated by adding the square of the diference between each element and the mean of the dataset. This sum will be dividing by the number of elements in the dataset. We&#39;ll give the user an example for better comprension.</span></span>
+<span id="cb34-6"><a href="#cb34-6"></a><span class="co">#&gt; </span></span>
+<span id="cb34-7"><a href="#cb34-7"></a><span class="co">#&gt; Formula -&gt;  (Summation(each_element - Mean)^2) / num_elements</span></span>
+<span id="cb34-8"><a href="#cb34-8"></a><span class="co">#&gt; </span></span>
+<span id="cb34-9"><a href="#cb34-9"></a><span class="co">#&gt; Mean -&gt; (x1 + x2 +..+xn) / n</span></span>
+<span id="cb34-10"><a href="#cb34-10"></a><span class="co">#&gt; </span></span>
+<span id="cb34-11"><a href="#cb34-11"></a><span class="co">#&gt; __Use Example__</span></span>
+<span id="cb34-12"><a href="#cb34-12"></a><span class="co">#&gt; </span></span>
+<span id="cb34-13"><a href="#cb34-13"></a><span class="co">#&gt; First of all, we need to know the content of the dataset/vector of numbers</span></span>
+<span id="cb34-14"><a href="#cb34-14"></a><span class="co">#&gt; </span></span>
+<span id="cb34-15"><a href="#cb34-15"></a><span class="co">#&gt; The content of the vector is: 1 ,1 ,2 ,3 ,4 ,7 ,8 ,8 ,8 ,10 ,10 ,11 ,12 ,15 ,20 ,22 ,25</span></span>
+<span id="cb34-16"><a href="#cb34-16"></a><span class="co">#&gt; The mean of dataset is... 9.82352941176471</span></span>
+<span id="cb34-17"><a href="#cb34-17"></a><span class="co">#&gt; The square of the diference between each number and the mean of dataset is: 77.85467 ,77.85467 ,61.20761 ,46.56055 ,33.91349 ,7.972318 ,3.32526 ,3.32526 ,3.32526 ,0.03114187 ,0.03114187 ,1.384083 ,4.737024 ,26.79585 ,103.5606 ,148.2664 ,230.3253</span></span>
+<span id="cb34-18"><a href="#cb34-18"></a><span class="co">#&gt; Now we need to add each element of the vector/dataset</span></span>
+<span id="cb34-19"><a href="#cb34-19"></a><span class="co">#&gt; The sum of the squares is:  830.470588235294 </span></span>
+<span id="cb34-20"><a href="#cb34-20"></a><span class="co">#&gt; </span></span>
+<span id="cb34-21"><a href="#cb34-21"></a><span class="co">#&gt; Next step, get the number of elements that we&#39;ve examined</span></span>
+<span id="cb34-22"><a href="#cb34-22"></a><span class="co">#&gt; The length of the vector is  17 elements</span></span>
+<span id="cb34-23"><a href="#cb34-23"></a><span class="co">#&gt; </span></span>
+<span id="cb34-24"><a href="#cb34-24"></a><span class="co">#&gt; Formula applied -&gt;  830.4706 / 16  =  51.9044117647059</span></span>
+<span id="cb34-25"><a href="#cb34-25"></a><span class="co">#&gt; Now try by your own! :D</span></span>
+<span id="cb34-26"><a href="#cb34-26"></a><span class="co">#&gt; </span></span>
+<span id="cb34-27"><a href="#cb34-27"></a><span class="co">#&gt; Use interactive.variance function to practice.</span></span></code></pre></div>
 <ul>
 <li>quartile:</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">explain.quartile</span>(data)
-<span class="co">#&gt; </span>
-<span class="co">#&gt; __QUARTILES CALCULUS__ </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Formula -&gt; (k * N ) / 4 where k -&gt; 1,2,3 and N -&gt; vector size</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; The quartile divides the dataset in 4 parts as equal as possible.</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; __Use Example__</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Step 1: The vector must be sorted.</span>
-<span class="co">#&gt; 1 ,1 ,2 ,3 ,4 ,7 ,8 ,8 ,8 ,10 ,10 ,11 ,12 ,15 ,20 ,22 ,25</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Step 2: Apply the formula (k * N) / 4 where 'k' is [1-3]</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Q1 -&gt; (1 *  17 ) / 4 =  4.25</span>
-<span class="co">#&gt; Q2 -&gt; (2 *  17 ) / 4 =  8.5</span>
-<span class="co">#&gt; Q3 -&gt; (3 *  17 ) / 4 =  12.75</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Visualization with colors:</span>
-<span class="co">#&gt; 1 ,1 ,2 ,3 ,4 ,7 ,8 ,8 ,8 ,10 ,10 ,11 ,12 ,15 ,20 ,22 ,25 </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Q1 -&gt;  4.25 || Q2 -&gt;  8.5 || Q3 -&gt;  12.75 || Q4 -&gt; onwards</span>
-<span class="co">#&gt; Now try by your own! :D</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Use interactive.quartile function to practice.</span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a><span class="kw">explain.quartile</span>(data)</span>
+<span id="cb35-2"><a href="#cb35-2"></a><span class="co">#&gt; </span></span>
+<span id="cb35-3"><a href="#cb35-3"></a><span class="co">#&gt; __QUARTILES CALCULUS__ </span></span>
+<span id="cb35-4"><a href="#cb35-4"></a><span class="co">#&gt; </span></span>
+<span id="cb35-5"><a href="#cb35-5"></a><span class="co">#&gt; The quartile divides the dataset in 4 parts as equal as possible.</span></span>
+<span id="cb35-6"><a href="#cb35-6"></a><span class="co">#&gt; </span></span>
+<span id="cb35-7"><a href="#cb35-7"></a><span class="co">#&gt; Formula -&gt; First quartile (Q1) as the median of the first half of values. </span></span>
+<span id="cb35-8"><a href="#cb35-8"></a><span class="co">#&gt;              Second quartile (Q2) as the median of the series itself.</span></span>
+<span id="cb35-9"><a href="#cb35-9"></a><span class="co">#&gt;              Third quartile (Q3) as the median of the second half of values. </span></span>
+<span id="cb35-10"><a href="#cb35-10"></a><span class="co">#&gt; </span></span>
+<span id="cb35-11"><a href="#cb35-11"></a><span class="co">#&gt; __Use Example__</span></span>
+<span id="cb35-12"><a href="#cb35-12"></a><span class="co">#&gt; </span></span>
+<span id="cb35-13"><a href="#cb35-13"></a><span class="co">#&gt; Step 1: The vector must be sorted.</span></span>
+<span id="cb35-14"><a href="#cb35-14"></a><span class="co">#&gt; 1 ,1 ,2 ,3 ,4 ,7 ,8 ,8 ,8 ,10 ,10 ,11 ,12 ,15 ,20 ,22 ,25</span></span>
+<span id="cb35-15"><a href="#cb35-15"></a><span class="co">#&gt; </span></span>
+<span id="cb35-16"><a href="#cb35-16"></a><span class="co">#&gt; Step 2: Calculated the quartiles </span></span>
+<span id="cb35-17"><a href="#cb35-17"></a><span class="co">#&gt; </span></span>
+<span id="cb35-18"><a href="#cb35-18"></a><span class="co">#&gt; Sorted vector: 1 1 2 3 4 7 8 8 8 </span></span>
+<span id="cb35-19"><a href="#cb35-19"></a><span class="co">#&gt; </span></span>
+<span id="cb35-20"><a href="#cb35-20"></a><span class="co">#&gt; </span></span>
+<span id="cb35-21"><a href="#cb35-21"></a><span class="co">#&gt; Q1 -&gt; (median  1 1 2 3 4 7 8 8 8 )  =  4</span></span>
+<span id="cb35-22"><a href="#cb35-22"></a><span class="co">#&gt; Sorted vector: 1 1 2 3 4 7 8 8 8 10 10 11 12 15 20 22 25 </span></span>
+<span id="cb35-23"><a href="#cb35-23"></a><span class="co">#&gt; </span></span>
+<span id="cb35-24"><a href="#cb35-24"></a><span class="co">#&gt; </span></span>
+<span id="cb35-25"><a href="#cb35-25"></a><span class="co">#&gt; Q1 -&gt; (median  1 1 2 3 4 7 8 8 8 10 10 11 12 15 20 22 25 )  =  8</span></span>
+<span id="cb35-26"><a href="#cb35-26"></a><span class="co">#&gt; Sorted vector: 8 10 10 11 12 15 20 22 25 </span></span>
+<span id="cb35-27"><a href="#cb35-27"></a><span class="co">#&gt; </span></span>
+<span id="cb35-28"><a href="#cb35-28"></a><span class="co">#&gt; </span></span>
+<span id="cb35-29"><a href="#cb35-29"></a><span class="co">#&gt; Q1 -&gt; (median  8 10 10 11 12 15 20 22 25 )  =  12</span></span>
+<span id="cb35-30"><a href="#cb35-30"></a><span class="co">#&gt; </span></span>
+<span id="cb35-31"><a href="#cb35-31"></a><span class="co">#&gt; Visualization with colors:</span></span>
+<span id="cb35-32"><a href="#cb35-32"></a><span class="co">#&gt; 1 ,1 ,2 ,3 ,4 ,7 ,8 ,8 ,8 ,10 ,10 ,11 ,12 ,15 ,20 ,22 ,25 </span></span>
+<span id="cb35-33"><a href="#cb35-33"></a><span class="co">#&gt; </span></span>
+<span id="cb35-34"><a href="#cb35-34"></a><span class="co">#&gt; Q1 -&gt;  4 || Q2 -&gt;  8 || Q3 -&gt;  12 || Q4 -&gt; onwards</span></span>
+<span id="cb35-35"><a href="#cb35-35"></a><span class="co">#&gt; Now try by your own! :D</span></span>
+<span id="cb35-36"><a href="#cb35-36"></a><span class="co">#&gt; </span></span>
+<span id="cb35-37"><a href="#cb35-37"></a><span class="co">#&gt; Use interactive.quartile function to practice.</span></span></code></pre></div>
 <ul>
 <li>percentile:</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">explain.percentile</span>(data)
-<span class="co">#&gt; </span>
-<span class="co">#&gt; __PERCENTILES CALCULUS__ </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Formula -&gt; (k * N ) / 100 where k -&gt; [1-100] and N -&gt; vector size</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; The percentile divides the dataset in 100 parts.</span>
-<span class="co">#&gt; The percentile indicates, once the data is ordered from least to greatest, the value of the variable below which a given percentage is located on the data</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; __Use Example__</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Step 1: The vector must be sorted.</span>
-<span class="co">#&gt; 1 ,1 ,2 ,3 ,4 ,7 ,8 ,8 ,8 ,10 ,10 ,11 ,12 ,15 ,20 ,22 ,25</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Step 2: Apply the formula (k * N) / 100 where 'k' is [1-100]</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; We will calculate the percentiles 1,25,37,50,92 in this example</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Percentile 1 -&gt; (1 *  17 ) / 100 =  0.17 </span>
-<span class="co">#&gt;  .Round up the value to locate it in the vector -&gt;  0.17  ~  1 </span>
-<span class="co">#&gt;  ..In our data, the value is = 1 ,1 ,2 ,3 ,4 ,7 ,8 ,8 ,8 ,10 ,10 ,11 ,12 ,15 ,20 ,22 ,25</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Percentile 25 -&gt; (25 *  17 ) / 100 =  4.25 </span>
-<span class="co">#&gt;  .Round up the value to locate it in the vector -&gt;  4.25  ~  5 </span>
-<span class="co">#&gt;  ..In our data, the value is = 1 ,1 ,2 ,3 ,4 ,7 ,8 ,8 ,8 ,10 ,10 ,11 ,12 ,15 ,20 ,22 ,25</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Percentile 37 -&gt; (37 *  17 ) / 100 =  6.29 </span>
-<span class="co">#&gt;  .Round up the value to locate it in the vector -&gt;  6.29  ~  7 </span>
-<span class="co">#&gt;  ..In our data, the value is = 1 ,1 ,2 ,3 ,4 ,7 ,8 ,8 ,8 ,10 ,10 ,11 ,12 ,15 ,20 ,22 ,25</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Percentile 50 -&gt; (50 *  17 ) / 100 =  8.5 </span>
-<span class="co">#&gt;  .Round up the value to locate it in the vector -&gt;  8.5  ~  9 </span>
-<span class="co">#&gt;  ..In our data, the value is = 1 ,1 ,2 ,3 ,4 ,7 ,8 ,8 ,8 ,10 ,10 ,11 ,12 ,15 ,20 ,22 ,25</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Percentile 92 -&gt; (92 *  17 ) / 100 =  15.64 </span>
-<span class="co">#&gt;  .Round up the value to locate it in the vector -&gt;  15.64  ~  16 </span>
-<span class="co">#&gt;  ..In our data, the value is = 1 ,1 ,2 ,3 ,4 ,7 ,8 ,8 ,8 ,10 ,10 ,11 ,12 ,15 ,20 ,22 ,25</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Now try by your own! :D</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Use interactive.percentile function to practice.</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a><span class="kw">explain.percentile</span>(data)</span>
+<span id="cb36-2"><a href="#cb36-2"></a><span class="co">#&gt; </span></span>
+<span id="cb36-3"><a href="#cb36-3"></a><span class="co">#&gt; __PERCENTILES CALCULUS__ </span></span>
+<span id="cb36-4"><a href="#cb36-4"></a><span class="co">#&gt; </span></span>
+<span id="cb36-5"><a href="#cb36-5"></a><span class="co">#&gt; The percentile divides the dataset in 100 parts.</span></span>
+<span id="cb36-6"><a href="#cb36-6"></a><span class="co">#&gt; The percentile indicates, once the data is ordered from least to greatest, the value of the variable below which a given percentage is located on the data</span></span>
+<span id="cb36-7"><a href="#cb36-7"></a><span class="co">#&gt; </span></span>
+<span id="cb36-8"><a href="#cb36-8"></a><span class="co">#&gt; Formula x -&gt; (k * N ) / 100 where k -&gt; [1-100] and N -&gt; vector size</span></span>
+<span id="cb36-9"><a href="#cb36-9"></a><span class="co">#&gt; </span></span>
+<span id="cb36-10"><a href="#cb36-10"></a><span class="co">#&gt; If rest of x is diference to 0, the value of its percentile will be the position of the quotient of the previous operation.  </span></span>
+<span id="cb36-11"><a href="#cb36-11"></a><span class="co">#&gt; </span></span>
+<span id="cb36-12"><a href="#cb36-12"></a><span class="co">#&gt; In the opposite case and being 0 will be the sum of the elements whose value is the quotient and following, less in the case of the 100% percentile that will be the last element.  </span></span>
+<span id="cb36-13"><a href="#cb36-13"></a><span class="co">#&gt; </span></span>
+<span id="cb36-14"><a href="#cb36-14"></a><span class="co">#&gt; __Use Example__</span></span>
+<span id="cb36-15"><a href="#cb36-15"></a><span class="co">#&gt; </span></span>
+<span id="cb36-16"><a href="#cb36-16"></a><span class="co">#&gt; Step 1: The vector must be sorted.</span></span>
+<span id="cb36-17"><a href="#cb36-17"></a><span class="co">#&gt; 1 ,1 ,2 ,3 ,4 ,7 ,8 ,8 ,8 ,10 ,10 ,11 ,12 ,15 ,20 ,22 ,25</span></span>
+<span id="cb36-18"><a href="#cb36-18"></a><span class="co">#&gt; </span></span>
+<span id="cb36-19"><a href="#cb36-19"></a><span class="co">#&gt; Step 2: Apply the formula (k * N) / 100 where &#39;k&#39; is [1-100]</span></span>
+<span id="cb36-20"><a href="#cb36-20"></a><span class="co">#&gt; </span></span>
+<span id="cb36-21"><a href="#cb36-21"></a><span class="co">#&gt; We will calculate the percentiles 1,25,37,50,92 in this example</span></span>
+<span id="cb36-22"><a href="#cb36-22"></a><span class="co">#&gt; </span></span>
+<span id="cb36-23"><a href="#cb36-23"></a><span class="co">#&gt; Percentile 1 -&gt; (1 *  17 ) / 100 =  0.17 </span></span>
+<span id="cb36-24"><a href="#cb36-24"></a><span class="co">#&gt;  .Round up the value to locate it in the vector -&gt;  0.17  ~  1 </span></span>
+<span id="cb36-25"><a href="#cb36-25"></a><span class="co">#&gt;  ..In our data, the value is = 1 ,1 ,2 ,3 ,4 ,7 ,8 ,8 ,8 ,10 ,10 ,11 ,12 ,15 ,20 ,22 ,25</span></span>
+<span id="cb36-26"><a href="#cb36-26"></a><span class="co">#&gt; </span></span>
+<span id="cb36-27"><a href="#cb36-27"></a><span class="co">#&gt; Percentile 25 -&gt; (25 *  17 ) / 100 =  4.25 </span></span>
+<span id="cb36-28"><a href="#cb36-28"></a><span class="co">#&gt;  .Round up the value to locate it in the vector -&gt;  4.25  ~  5 </span></span>
+<span id="cb36-29"><a href="#cb36-29"></a><span class="co">#&gt;  ..In our data, the value is = 1 ,1 ,2 ,3 ,4 ,7 ,8 ,8 ,8 ,10 ,10 ,11 ,12 ,15 ,20 ,22 ,25</span></span>
+<span id="cb36-30"><a href="#cb36-30"></a><span class="co">#&gt; </span></span>
+<span id="cb36-31"><a href="#cb36-31"></a><span class="co">#&gt; Percentile 37 -&gt; (37 *  17 ) / 100 =  6.29 </span></span>
+<span id="cb36-32"><a href="#cb36-32"></a><span class="co">#&gt;  .Round up the value to locate it in the vector -&gt;  6.29  ~  7 </span></span>
+<span id="cb36-33"><a href="#cb36-33"></a><span class="co">#&gt;  ..In our data, the value is = 1 ,1 ,2 ,3 ,4 ,7 ,8 ,8 ,8 ,10 ,10 ,11 ,12 ,15 ,20 ,22 ,25</span></span>
+<span id="cb36-34"><a href="#cb36-34"></a><span class="co">#&gt; </span></span>
+<span id="cb36-35"><a href="#cb36-35"></a><span class="co">#&gt; Percentile 50 -&gt; (50 *  17 ) / 100 =  8.5 </span></span>
+<span id="cb36-36"><a href="#cb36-36"></a><span class="co">#&gt;  .Round up the value to locate it in the vector -&gt;  8.5  ~  9 </span></span>
+<span id="cb36-37"><a href="#cb36-37"></a><span class="co">#&gt;  ..In our data, the value is = 1 ,1 ,2 ,3 ,4 ,7 ,8 ,8 ,8 ,10 ,10 ,11 ,12 ,15 ,20 ,22 ,25</span></span>
+<span id="cb36-38"><a href="#cb36-38"></a><span class="co">#&gt; </span></span>
+<span id="cb36-39"><a href="#cb36-39"></a><span class="co">#&gt; Percentile 92 -&gt; (92 *  17 ) / 100 =  15.64 </span></span>
+<span id="cb36-40"><a href="#cb36-40"></a><span class="co">#&gt;  .Round up the value to locate it in the vector -&gt;  15.64  ~  16 </span></span>
+<span id="cb36-41"><a href="#cb36-41"></a><span class="co">#&gt;  ..In our data, the value is = 1 ,1 ,2 ,3 ,4 ,7 ,8 ,8 ,8 ,10 ,10 ,11 ,12 ,15 ,20 ,22 ,25</span></span>
+<span id="cb36-42"><a href="#cb36-42"></a><span class="co">#&gt; </span></span>
+<span id="cb36-43"><a href="#cb36-43"></a><span class="co">#&gt; Now try by your own! :D</span></span>
+<span id="cb36-44"><a href="#cb36-44"></a><span class="co">#&gt; </span></span>
+<span id="cb36-45"><a href="#cb36-45"></a><span class="co">#&gt; Use interactive.percentile function to practice.</span></span></code></pre></div>
 <ul>
 <li>absolute frecuency:</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">explain.absolute_frecuency</span>(data,<span class="dv">10</span>)
-<span class="co">#&gt; </span>
-<span class="co">#&gt; __ABSOLUTE FRECUENCY CALCULUS__ </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Formula -&gt; N1 + N2 + N3 + ... + Nk -&gt; Nk = X (Where 'X' is the element we want to examine)</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; The absolute frequency (Ni) of a value Xi is the number of times the value is in the set (X1, X2, ..., XN)</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; __Use Example__</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; All we need to do is count the number of times that the element  10  appears in our data set</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Our data set: 1 ,1 ,2 ,3 ,4 ,7 ,8 ,8 ,8 ,10 ,10 ,11 ,12 ,15 ,20 ,22 ,25</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Now count the number of times that the element  10  appears:  2 </span>
-<span class="co">#&gt; 1 ,1 ,2 ,3 ,4 ,7 ,8 ,8 ,8 ,10 ,10 ,11 ,12 ,15 ,20 ,22 ,25</span>
-<span class="co">#&gt; Now try by your own! :D</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Use interactive.absolute_frecuency function to practice.</span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="kw">explain.absolute_frecuency</span>(data,<span class="dv">10</span>)</span>
+<span id="cb37-2"><a href="#cb37-2"></a><span class="co">#&gt; </span></span>
+<span id="cb37-3"><a href="#cb37-3"></a><span class="co">#&gt; __ABSOLUTE FRECUENCY CALCULUS__ </span></span>
+<span id="cb37-4"><a href="#cb37-4"></a><span class="co">#&gt; </span></span>
+<span id="cb37-5"><a href="#cb37-5"></a><span class="co">#&gt; The absolute frequency (Ni) of a value Xi is the number of times the value is in the set (X1, X2, ..., XN)</span></span>
+<span id="cb37-6"><a href="#cb37-6"></a><span class="co">#&gt; </span></span>
+<span id="cb37-7"><a href="#cb37-7"></a><span class="co">#&gt; Formula -&gt; N1 + N2 + N3 + ... + Nk -&gt; Nk = X (Where &#39;X&#39; is the element we want to examine)</span></span>
+<span id="cb37-8"><a href="#cb37-8"></a><span class="co">#&gt; </span></span>
+<span id="cb37-9"><a href="#cb37-9"></a><span class="co">#&gt; __Use Example__</span></span>
+<span id="cb37-10"><a href="#cb37-10"></a><span class="co">#&gt; </span></span>
+<span id="cb37-11"><a href="#cb37-11"></a><span class="co">#&gt; All we need to do is count the number of times that the element  10  appears in our data set</span></span>
+<span id="cb37-12"><a href="#cb37-12"></a><span class="co">#&gt; </span></span>
+<span id="cb37-13"><a href="#cb37-13"></a><span class="co">#&gt; Our data set: 1 ,1 ,2 ,3 ,4 ,7 ,8 ,8 ,8 ,10 ,10 ,11 ,12 ,15 ,20 ,22 ,25</span></span>
+<span id="cb37-14"><a href="#cb37-14"></a><span class="co">#&gt; </span></span>
+<span id="cb37-15"><a href="#cb37-15"></a><span class="co">#&gt; Now count the number of times that the element  10  appears:  2 </span></span>
+<span id="cb37-16"><a href="#cb37-16"></a><span class="co">#&gt; 1 ,1 ,2 ,3 ,4 ,7 ,8 ,8 ,8 ,10 ,10 ,11 ,12 ,15 ,20 ,22 ,25</span></span>
+<span id="cb37-17"><a href="#cb37-17"></a><span class="co">#&gt; Now try by your own! :D</span></span>
+<span id="cb37-18"><a href="#cb37-18"></a><span class="co">#&gt; </span></span>
+<span id="cb37-19"><a href="#cb37-19"></a><span class="co">#&gt; Use interactive.absolute_frecuency function to practice.</span></span></code></pre></div>
 <ul>
 <li>relative frecuency:</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">explain.relative_frecuency</span>(data,<span class="dv">8</span>)
-<span class="co">#&gt; </span>
-<span class="co">#&gt; __RELATIVE FRECUENCY CALCULUS__ </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Formula -&gt; (Abs_frec(X) / N ) -&gt; Where 'X' is the element we want to examine</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; The relative frequency is the quotient between the absolute frequency of a certain value and the total number of data</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; __Use Example__</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Step 1: count the number of times that the element  8  appears in our data set</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Our data set: 1 ,1 ,2 ,3 ,4 ,7 ,8 ,8 ,8 ,10 ,10 ,11 ,12 ,15 ,20 ,22 ,25</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Now count the number of times that the element  8  appears:  3 </span>
-<span class="co">#&gt; 1 ,1 ,2 ,3 ,4 ,7 ,8 ,8 ,8 ,10 ,10 ,11 ,12 ,15 ,20 ,22 ,25</span>
-<span class="co">#&gt; Step 2: divide it by the length of the data set</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Solution --&gt; relative_frecuency = (absolute_frecuency(x) / length(data)) =  3  /  17  =  0.176470588235294 .</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Now try by your own! :D</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Use interactive.relative_frecuency function to practice.</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a><span class="kw">explain.relative_frecuency</span>(data,<span class="dv">8</span>)</span>
+<span id="cb38-2"><a href="#cb38-2"></a><span class="co">#&gt; </span></span>
+<span id="cb38-3"><a href="#cb38-3"></a><span class="co">#&gt; __RELATIVE FRECUENCY CALCULUS__ </span></span>
+<span id="cb38-4"><a href="#cb38-4"></a><span class="co">#&gt; </span></span>
+<span id="cb38-5"><a href="#cb38-5"></a><span class="co">#&gt; The relative frequency is the quotient between the absolute frequency of a certain value and the total number of data</span></span>
+<span id="cb38-6"><a href="#cb38-6"></a><span class="co">#&gt; </span></span>
+<span id="cb38-7"><a href="#cb38-7"></a><span class="co">#&gt; Formula -&gt; (Abs_frec(X) / N ) -&gt; Where &#39;X&#39; is the element we want to examine</span></span>
+<span id="cb38-8"><a href="#cb38-8"></a><span class="co">#&gt; </span></span>
+<span id="cb38-9"><a href="#cb38-9"></a><span class="co">#&gt; __Use Example__</span></span>
+<span id="cb38-10"><a href="#cb38-10"></a><span class="co">#&gt; </span></span>
+<span id="cb38-11"><a href="#cb38-11"></a><span class="co">#&gt; Step 1: count the number of times that the element  8  appears in our data set</span></span>
+<span id="cb38-12"><a href="#cb38-12"></a><span class="co">#&gt; </span></span>
+<span id="cb38-13"><a href="#cb38-13"></a><span class="co">#&gt; Our data set: 1 ,1 ,2 ,3 ,4 ,7 ,8 ,8 ,8 ,10 ,10 ,11 ,12 ,15 ,20 ,22 ,25</span></span>
+<span id="cb38-14"><a href="#cb38-14"></a><span class="co">#&gt; </span></span>
+<span id="cb38-15"><a href="#cb38-15"></a><span class="co">#&gt; Now count the number of times that the element  8  appears:  3 </span></span>
+<span id="cb38-16"><a href="#cb38-16"></a><span class="co">#&gt; 1 ,1 ,2 ,3 ,4 ,7 ,8 ,8 ,8 ,10 ,10 ,11 ,12 ,15 ,20 ,22 ,25</span></span>
+<span id="cb38-17"><a href="#cb38-17"></a><span class="co">#&gt; Step 2: divide it by the length of the data set</span></span>
+<span id="cb38-18"><a href="#cb38-18"></a><span class="co">#&gt; </span></span>
+<span id="cb38-19"><a href="#cb38-19"></a><span class="co">#&gt; Solution --&gt; relative_frecuency = (absolute_frecuency(x) / length(data)) =  3  /  17  =  0.176470588235294 .</span></span>
+<span id="cb38-20"><a href="#cb38-20"></a><span class="co">#&gt; </span></span>
+<span id="cb38-21"><a href="#cb38-21"></a><span class="co">#&gt; Now try by your own! :D</span></span>
+<span id="cb38-22"><a href="#cb38-22"></a><span class="co">#&gt; </span></span>
+<span id="cb38-23"><a href="#cb38-23"></a><span class="co">#&gt; Use interactive.relative_frecuency function to practice.</span></span></code></pre></div>
 <ul>
 <li>absolute acumulated frecuency:</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">explain.absolute_acum_frecuency</span>(data,<span class="dv">10</span>)
-<span class="co">#&gt; </span>
-<span class="co">#&gt; __ABSOLUTE ACUMULATED FRECUENCY CALCULUS__ </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Formula -&gt; Summation(abs_frecuency &lt;= X ) -&gt; Where 'X' is the element we want to examine</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; The absolute acumulated frequency is the sum of the absolute frequency of the values minors or equals than the value we want to examine</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; __Use Example__</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Step 1: count the number of times that the elements minors or equals than  10  appears in our data set</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Our data set: 1 ,1 ,2 ,3 ,4 ,7 ,8 ,8 ,8 ,10 ,10 ,11 ,12 ,15 ,20 ,22 ,25</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Number of times that elements minors or equals to  10  appears =  11 </span>
-<span class="co">#&gt; 1 ,1 ,2 ,3 ,4 ,7 ,8 ,8 ,8 ,10 ,10 ,11 ,12 ,15 ,20 ,22 ,25</span>
-<span class="co">#&gt; Solution --&gt; absolute_frecuency_acum = Summation(abs_frecuency &lt;= X)  =  11 .</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Now try by your own! :D</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Use interactive.absolute_acum_frecuency function to practice.</span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a><span class="kw">explain.absolute_acum_frecuency</span>(data,<span class="dv">10</span>)</span>
+<span id="cb39-2"><a href="#cb39-2"></a><span class="co">#&gt; </span></span>
+<span id="cb39-3"><a href="#cb39-3"></a><span class="co">#&gt; __ABSOLUTE ACUMULATED FRECUENCY CALCULUS__ </span></span>
+<span id="cb39-4"><a href="#cb39-4"></a><span class="co">#&gt; </span></span>
+<span id="cb39-5"><a href="#cb39-5"></a><span class="co">#&gt; The absolute acumulated frequency is the sum of the absolute frequency of the values minors or equals than the value we want to examine</span></span>
+<span id="cb39-6"><a href="#cb39-6"></a><span class="co">#&gt; </span></span>
+<span id="cb39-7"><a href="#cb39-7"></a><span class="co">#&gt; Formula -&gt; Summation(abs_frecuency &lt;= X ) -&gt; Where &#39;X&#39; is the element we want to examine</span></span>
+<span id="cb39-8"><a href="#cb39-8"></a><span class="co">#&gt; </span></span>
+<span id="cb39-9"><a href="#cb39-9"></a><span class="co">#&gt; __Use Example__</span></span>
+<span id="cb39-10"><a href="#cb39-10"></a><span class="co">#&gt; </span></span>
+<span id="cb39-11"><a href="#cb39-11"></a><span class="co">#&gt; Step 1: count the number of times that the elements minors or equals than  10  appears in our data set</span></span>
+<span id="cb39-12"><a href="#cb39-12"></a><span class="co">#&gt; </span></span>
+<span id="cb39-13"><a href="#cb39-13"></a><span class="co">#&gt; Our data set: 1 ,1 ,2 ,3 ,4 ,7 ,8 ,8 ,8 ,10 ,10 ,11 ,12 ,15 ,20 ,22 ,25</span></span>
+<span id="cb39-14"><a href="#cb39-14"></a><span class="co">#&gt; </span></span>
+<span id="cb39-15"><a href="#cb39-15"></a><span class="co">#&gt; Number of times that elements minors or equals to  10  appears =  11 </span></span>
+<span id="cb39-16"><a href="#cb39-16"></a><span class="co">#&gt; 1 ,1 ,2 ,3 ,4 ,7 ,8 ,8 ,8 ,10 ,10 ,11 ,12 ,15 ,20 ,22 ,25</span></span>
+<span id="cb39-17"><a href="#cb39-17"></a><span class="co">#&gt; Solution --&gt; absolute_frecuency_acum = Summation(abs_frecuency &lt;= X)  =  11 .</span></span>
+<span id="cb39-18"><a href="#cb39-18"></a><span class="co">#&gt; </span></span>
+<span id="cb39-19"><a href="#cb39-19"></a><span class="co">#&gt; Now try by your own! :D</span></span>
+<span id="cb39-20"><a href="#cb39-20"></a><span class="co">#&gt; </span></span>
+<span id="cb39-21"><a href="#cb39-21"></a><span class="co">#&gt; Use interactive.absolute_acum_frecuency function to practice.</span></span></code></pre></div>
 <ul>
 <li>relative acumulated frecuency:</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">explain.relative_acum_frecuency</span>(data,<span class="dv">8</span>)
-<span class="co">#&gt; </span>
-<span class="co">#&gt; __RELATIVE ACUMULATED FRECUENCY CALCULUS__ </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Formula -&gt; (Summation(abs_frecuency &lt;= X) / N ) -&gt; Where 'X' is the element we want to examine</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; The relative acumulated frequency is the quotient between the sum of the absolute frequency of the values minors or equals than the value we want to examine, and the total number of data</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; __Use Example__</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Step 1: count the number of times that the elements minors or equals than  8  appears in our data set</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Our data set: 1 ,1 ,2 ,3 ,4 ,7 ,8 ,8 ,8 ,10 ,10 ,11 ,12 ,15 ,20 ,22 ,25</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Number of times that elements minors or equals to  8  appears =  9 </span>
-<span class="co">#&gt; 1 ,1 ,2 ,3 ,4 ,7 ,8 ,8 ,8 ,10 ,10 ,11 ,12 ,15 ,20 ,22 ,25</span>
-<span class="co">#&gt; Step 2: divide it by the length of the data set</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Solution --&gt; relative_frecuency_acum = (Summation(abs_frecuency &lt;= X) / length(data)) =  9  /  17  =  0.529411764705882 .</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Now try by your own! :D</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Use interactive.relative_acum_frecuency function to practice.</span></code></pre></div>
-</div>
-<div id="user-interactive-functions" class="section level2">
-<h2>User Interactive Functions:</h2>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a><span class="kw">explain.relative_acum_frecuency</span>(data,<span class="dv">8</span>)</span>
+<span id="cb40-2"><a href="#cb40-2"></a><span class="co">#&gt; </span></span>
+<span id="cb40-3"><a href="#cb40-3"></a><span class="co">#&gt; __RELATIVE ACUMULATED FRECUENCY CALCULUS__ </span></span>
+<span id="cb40-4"><a href="#cb40-4"></a><span class="co">#&gt; </span></span>
+<span id="cb40-5"><a href="#cb40-5"></a><span class="co">#&gt; The relative acumulated frequency is the quotient between the sum of the absolute frequency of the values minors or equals than the value we want to examine, and the total number of data</span></span>
+<span id="cb40-6"><a href="#cb40-6"></a><span class="co">#&gt; </span></span>
+<span id="cb40-7"><a href="#cb40-7"></a><span class="co">#&gt; Formula -&gt; (Summation(abs_frecuency &lt;= X) / N ) -&gt; Where &#39;X&#39; is the element we want to examine</span></span>
+<span id="cb40-8"><a href="#cb40-8"></a><span class="co">#&gt; </span></span>
+<span id="cb40-9"><a href="#cb40-9"></a><span class="co">#&gt; __Use Example__</span></span>
+<span id="cb40-10"><a href="#cb40-10"></a><span class="co">#&gt; </span></span>
+<span id="cb40-11"><a href="#cb40-11"></a><span class="co">#&gt; Step 1: count the number of times that the elements minors or equals than  8  appears in our data set</span></span>
+<span id="cb40-12"><a href="#cb40-12"></a><span class="co">#&gt; </span></span>
+<span id="cb40-13"><a href="#cb40-13"></a><span class="co">#&gt; Our data set: 1 ,1 ,2 ,3 ,4 ,7 ,8 ,8 ,8 ,10 ,10 ,11 ,12 ,15 ,20 ,22 ,25</span></span>
+<span id="cb40-14"><a href="#cb40-14"></a><span class="co">#&gt; </span></span>
+<span id="cb40-15"><a href="#cb40-15"></a><span class="co">#&gt; Number of times that elements minors or equals to  8  appears =  9 </span></span>
+<span id="cb40-16"><a href="#cb40-16"></a><span class="co">#&gt; 1 ,1 ,2 ,3 ,4 ,7 ,8 ,8 ,8 ,10 ,10 ,11 ,12 ,15 ,20 ,22 ,25</span></span>
+<span id="cb40-17"><a href="#cb40-17"></a><span class="co">#&gt; Step 2: divide it by the length of the data set</span></span>
+<span id="cb40-18"><a href="#cb40-18"></a><span class="co">#&gt; </span></span>
+<span id="cb40-19"><a href="#cb40-19"></a><span class="co">#&gt; Solution --&gt; relative_frecuency_acum = (Summation(abs_frecuency &lt;= X) / length(data)) =  9  /  17  =  0.529411764705882 .</span></span>
+<span id="cb40-20"><a href="#cb40-20"></a><span class="co">#&gt; </span></span>
+<span id="cb40-21"><a href="#cb40-21"></a><span class="co">#&gt; Now try by your own! :D</span></span>
+<span id="cb40-22"><a href="#cb40-22"></a><span class="co">#&gt; </span></span>
+<span id="cb40-23"><a href="#cb40-23"></a><span class="co">#&gt; Use interactive.relative_acum_frecuency function to practice.</span></span></code></pre></div>
+<ul>
+<li>covariance:</li>
+</ul>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a><span class="kw">explain.covariance</span>(data,data2)</span>
+<span id="cb41-2"><a href="#cb41-2"></a><span class="co">#&gt; </span></span>
+<span id="cb41-3"><a href="#cb41-3"></a><span class="co">#&gt; __COVARIANCE CALCULUS__ </span></span>
+<span id="cb41-4"><a href="#cb41-4"></a><span class="co">#&gt; </span></span>
+<span id="cb41-5"><a href="#cb41-5"></a><span class="co">#&gt; The covariance of a dataset is calculated by product of sum of elements of x minus the mean&#39;s x and sum elements of y minus the mean&#39;s y. All of then divide by size of anyone dataset.</span></span>
+<span id="cb41-6"><a href="#cb41-6"></a><span class="co">#&gt; </span></span>
+<span id="cb41-7"><a href="#cb41-7"></a><span class="co">#&gt; Formula -&gt;  ((Summation(each_element(x) - Mean(x))) * Summation(each_element(y) - Mean(y))) / num_elements</span></span>
+<span id="cb41-8"><a href="#cb41-8"></a><span class="co">#&gt; </span></span>
+<span id="cb41-9"><a href="#cb41-9"></a><span class="co">#&gt; Mean -&gt; (x1 + x2 +..+xn) / n</span></span>
+<span id="cb41-10"><a href="#cb41-10"></a><span class="co">#&gt; </span></span>
+<span id="cb41-11"><a href="#cb41-11"></a><span class="co">#&gt; __Use Example__</span></span>
+<span id="cb41-12"><a href="#cb41-12"></a><span class="co">#&gt; </span></span>
+<span id="cb41-13"><a href="#cb41-13"></a><span class="co">#&gt; First of all, we need to know the contents of the datasets/vectors of numbers</span></span>
+<span id="cb41-14"><a href="#cb41-14"></a><span class="co">#&gt; </span></span>
+<span id="cb41-15"><a href="#cb41-15"></a><span class="co">#&gt; The contents of the vectors are: 1 ,1 ,2 ,3 ,4 ,7 ,8 ,8 ,8 ,10 ,10 ,11 ,12 ,15 ,20 ,22 ,251 ,1 ,4 ,5 ,5 ,5 ,7 ,8 ,10 ,10 ,10 ,11 ,20 ,22 ,22 ,24 ,25</span></span>
+<span id="cb41-16"><a href="#cb41-16"></a><span class="co">#&gt; The mean of x dataset is... 9.82352941176471</span></span>
+<span id="cb41-17"><a href="#cb41-17"></a><span class="co">#&gt; The mean of y dataset is... 11.1764705882353</span></span>
+<span id="cb41-18"><a href="#cb41-18"></a><span class="co">#&gt; The difference of elements by their means: -8.823529 ,-8.823529 ,-7.823529 ,-6.823529 ,-5.823529 ,-2.823529 ,-1.823529 ,-1.823529 ,-1.823529 ,0.1764706 ,0.1764706 ,1.176471 ,2.176471 ,5.176471 ,10.17647 ,12.17647 ,15.17647 ,-10.17647 ,-10.17647 ,-7.176471 ,-6.176471 ,-6.176471 ,-6.176471 ,-4.176471 ,-3.176471 ,-1.176471 ,-1.176471 ,-1.176471 ,-0.1764706 ,8.823529 ,10.82353 ,10.82353 ,12.82353 ,13.82353 ,</span></span>
+<span id="cb41-19"><a href="#cb41-19"></a><span class="co">#&gt; Now we need to add each element of the vector/dataset</span></span>
+<span id="cb41-20"><a href="#cb41-20"></a><span class="co">#&gt; The sum of the elements of x is:  -4.61852778244065e-14 </span></span>
+<span id="cb41-21"><a href="#cb41-21"></a><span class="co">#&gt; The sum of the elements of y is:  4.61852778244065e-14 </span></span>
+<span id="cb41-22"><a href="#cb41-22"></a><span class="co">#&gt; </span></span>
+<span id="cb41-23"><a href="#cb41-23"></a><span class="co">#&gt; Next step, get the number of elements that we&#39;ve examined</span></span>
+<span id="cb41-24"><a href="#cb41-24"></a><span class="co">#&gt; The length of the vector is  17 elements</span></span>
+<span id="cb41-25"><a href="#cb41-25"></a><span class="co">#&gt; </span></span>
+<span id="cb41-26"><a href="#cb41-26"></a><span class="co">#&gt; Formula applied -&gt; ( -4.618528e-14 * 4.618528e-14 ) / 17  =  -1.25475287512801e-28</span></span>
+<span id="cb41-27"><a href="#cb41-27"></a><span class="co">#&gt; Now try by your own! :D</span></span>
+<span id="cb41-28"><a href="#cb41-28"></a><span class="co">#&gt; </span></span>
+<span id="cb41-29"><a href="#cb41-29"></a><span class="co">#&gt; Use interactive.covariance function to practice.</span></span></code></pre></div>
+<ul>
+<li>harmonic mean:</li>
+</ul>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a><span class="kw">explain.harmonicMean</span>(data)</span>
+<span id="cb42-2"><a href="#cb42-2"></a><span class="co">#&gt; </span></span>
+<span id="cb42-3"><a href="#cb42-3"></a><span class="co">#&gt; __HARMONIC MEAN CALCULUS__ </span></span>
+<span id="cb42-4"><a href="#cb42-4"></a><span class="co">#&gt; </span></span>
+<span id="cb42-5"><a href="#cb42-5"></a><span class="co">#&gt; The harmonic mean of a dataset is calculated by the number of values by divided the inverse sum of the values . We&#39;ll give the user an example for better comprension.</span></span>
+<span id="cb42-6"><a href="#cb42-6"></a><span class="co">#&gt; </span></span>
+<span id="cb42-7"><a href="#cb42-7"></a><span class="co">#&gt; Formula -&gt; num_elements/ (1/x1 + 1/x2 +..+ 1/xn) </span></span>
+<span id="cb42-8"><a href="#cb42-8"></a><span class="co">#&gt; xn: valor of elements to dataset</span></span>
+<span id="cb42-9"><a href="#cb42-9"></a><span class="co">#&gt; </span></span>
+<span id="cb42-10"><a href="#cb42-10"></a><span class="co">#&gt; __Use Example__</span></span>
+<span id="cb42-11"><a href="#cb42-11"></a><span class="co">#&gt; </span></span>
+<span id="cb42-12"><a href="#cb42-12"></a><span class="co">#&gt; First of all, we need to know the content of the dataset/vector of numbers</span></span>
+<span id="cb42-13"><a href="#cb42-13"></a><span class="co">#&gt; </span></span>
+<span id="cb42-14"><a href="#cb42-14"></a><span class="co">#&gt; The content of the vector is: 1 ,1 ,1 ,2 ,3 ,8 ,8 ,8 ,8 ,10 ,10 ,10 ,11 ,20 ,NA ,NA ,NA ,</span></span>
+<span id="cb42-15"><a href="#cb42-15"></a><span class="co">#&gt; The invert sum of the elements is:  4.17755411255411 </span></span>
+<span id="cb42-16"><a href="#cb42-16"></a><span class="co">#&gt; </span></span>
+<span id="cb42-17"><a href="#cb42-17"></a><span class="co">#&gt; Next step, get the number of elements that we&#39;ve examined</span></span>
+<span id="cb42-18"><a href="#cb42-18"></a><span class="co">#&gt; The length of the vector is  17 elements</span></span>
+<span id="cb42-19"><a href="#cb42-19"></a><span class="co">#&gt; </span></span>
+<span id="cb42-20"><a href="#cb42-20"></a><span class="co">#&gt; Formula applied -&gt;  17 / 4.17755411255411  =  4.06936679740729</span></span>
+<span id="cb42-21"><a href="#cb42-21"></a><span class="co">#&gt; Now try by your own! :D</span></span>
+<span id="cb42-22"><a href="#cb42-22"></a><span class="co">#&gt; </span></span>
+<span id="cb42-23"><a href="#cb42-23"></a><span class="co">#&gt; Use interactive.harmonicMean function to practice.</span></span></code></pre></div>
+<ul>
+<li>pearson correlaction:</li>
+</ul>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a><span class="kw">explain.pearson</span>(data,data2)</span>
+<span id="cb43-2"><a href="#cb43-2"></a><span class="co">#&gt; </span></span>
+<span id="cb43-3"><a href="#cb43-3"></a><span class="co">#&gt; __PEARSON CORRELATION COEFFICIENT__ </span></span>
+<span id="cb43-4"><a href="#cb43-4"></a><span class="co">#&gt; </span></span>
+<span id="cb43-5"><a href="#cb43-5"></a><span class="co">#&gt; Pearson&#39;s correlation coefficient is the covariance of the two variables divided by the product of their standard deviations.It has a value between +1 and -1. A value of +1 is total positive linear correlation, 0 is no linear correlation, and -1 is total negative linear correlation.</span></span>
+<span id="cb43-6"><a href="#cb43-6"></a><span class="co">#&gt; </span></span>
+<span id="cb43-7"><a href="#cb43-7"></a><span class="co">#&gt; Formula -&gt;  (covariance(x,y) / (standardDeviation(x) * standardDeviation(y))</span></span>
+<span id="cb43-8"><a href="#cb43-8"></a><span class="co">#&gt; </span></span>
+<span id="cb43-9"><a href="#cb43-9"></a><span class="co">#&gt; __Use Example__</span></span>
+<span id="cb43-10"><a href="#cb43-10"></a><span class="co">#&gt; </span></span>
+<span id="cb43-11"><a href="#cb43-11"></a><span class="co">#&gt; First of all, we need to know the contents of the datasets/vectors of numbers</span></span>
+<span id="cb43-12"><a href="#cb43-12"></a><span class="co">#&gt; </span></span>
+<span id="cb43-13"><a href="#cb43-13"></a><span class="co">#&gt; The contents of the vectors are: 1 ,1 ,2 ,3 ,4 ,7 ,8 ,8 ,8 ,10 ,10 ,11 ,12 ,15 ,20 ,22 ,251 ,1 ,4 ,5 ,5 ,5 ,7 ,8 ,10 ,10 ,10 ,11 ,20 ,22 ,22 ,24 ,25The value of covariance:  52.7958477508651 </span></span>
+<span id="cb43-14"><a href="#cb43-14"></a><span class="co">#&gt; The standard deviation of the elements of x is:  6.98936413936664 </span></span>
+<span id="cb43-15"><a href="#cb43-15"></a><span class="co">#&gt; The standard deviation of the elements of y is:  7.94270137864388 </span></span>
+<span id="cb43-16"><a href="#cb43-16"></a><span class="co">#&gt; </span></span>
+<span id="cb43-17"><a href="#cb43-17"></a><span class="co">#&gt; Formula applied -&gt; ( 52.79585 / ( 6.989364  *  7.942701 ) =  0.951029231000006</span></span>
+<span id="cb43-18"><a href="#cb43-18"></a><span class="co">#&gt; Now try by your own! :D</span></span>
+<span id="cb43-19"><a href="#cb43-19"></a><span class="co">#&gt; </span></span>
+<span id="cb43-20"><a href="#cb43-20"></a><span class="co">#&gt; Use interactive.pearson function to practice.</span></span></code></pre></div>
+<ul>
+<li>coefficient of variation:</li>
+</ul>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1"></a><span class="kw">explain.cv</span>(data)</span>
+<span id="cb44-2"><a href="#cb44-2"></a><span class="co">#&gt; </span></span>
+<span id="cb44-3"><a href="#cb44-3"></a><span class="co">#&gt; __COEFFICIENT OF VARIATION__ </span></span>
+<span id="cb44-4"><a href="#cb44-4"></a><span class="co">#&gt; </span></span>
+<span id="cb44-5"><a href="#cb44-5"></a><span class="co">#&gt; The coefficient of variation (CV) is defined as the ratio of the standard deviation to the mean.</span></span>
+<span id="cb44-6"><a href="#cb44-6"></a><span class="co">#&gt; </span></span>
+<span id="cb44-7"><a href="#cb44-7"></a><span class="co">#&gt; Formula -&gt;  (standardDeviation(x) / mean(x))</span></span>
+<span id="cb44-8"><a href="#cb44-8"></a><span class="co">#&gt; </span></span>
+<span id="cb44-9"><a href="#cb44-9"></a><span class="co">#&gt; __Use Example__</span></span>
+<span id="cb44-10"><a href="#cb44-10"></a><span class="co">#&gt; </span></span>
+<span id="cb44-11"><a href="#cb44-11"></a><span class="co">#&gt; First of all, we need to know the contents of the datasets/vectors of numbers</span></span>
+<span id="cb44-12"><a href="#cb44-12"></a><span class="co">#&gt; </span></span>
+<span id="cb44-13"><a href="#cb44-13"></a><span class="co">#&gt; The contents of the vector is: 1 ,1 ,2 ,3 ,4 ,7 ,8 ,8 ,8 ,10 ,10 ,11 ,12 ,15 ,20 ,22 ,25The standard deviation of the elements of x is:  6.98936413936664 </span></span>
+<span id="cb44-14"><a href="#cb44-14"></a><span class="co">#&gt; The value of mean:  9.82352941176471 </span></span>
+<span id="cb44-15"><a href="#cb44-15"></a><span class="co">#&gt; </span></span>
+<span id="cb44-16"><a href="#cb44-16"></a><span class="co">#&gt; Formula applied -&gt; ( 6.989364 /  9.823529  =  0.711492157899598</span></span>
+<span id="cb44-17"><a href="#cb44-17"></a><span class="co">#&gt; Now try by your own! :D</span></span>
+<span id="cb44-18"><a href="#cb44-18"></a><span class="co">#&gt; </span></span>
+<span id="cb44-19"><a href="#cb44-19"></a><span class="co">#&gt; Use interactive.cv function to practice.</span></span></code></pre></div>
+<ul>
+<li>Laplace rule:</li>
+</ul>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a><span class="kw">explain.laplace</span>(data,data2)</span>
+<span id="cb45-2"><a href="#cb45-2"></a><span class="co">#&gt; </span></span>
+<span id="cb45-3"><a href="#cb45-3"></a><span class="co">#&gt; __LAPLACE`S RULE __ </span></span>
+<span id="cb45-4"><a href="#cb45-4"></a><span class="co">#&gt; </span></span>
+<span id="cb45-5"><a href="#cb45-5"></a><span class="co">#&gt; Laplace&#39;s rule as the quotient between the number of favorable cases to A, and that of all possible results of the experiment.</span></span>
+<span id="cb45-6"><a href="#cb45-6"></a><span class="co">#&gt; </span></span>
+<span id="cb45-7"><a href="#cb45-7"></a><span class="co">#&gt; Formula -&gt;  (Cases favorable to A / All possible results)</span></span>
+<span id="cb45-8"><a href="#cb45-8"></a><span class="co">#&gt; </span></span>
+<span id="cb45-9"><a href="#cb45-9"></a><span class="co">#&gt; __Use Example__</span></span>
+<span id="cb45-10"><a href="#cb45-10"></a><span class="co">#&gt; </span></span>
+<span id="cb45-11"><a href="#cb45-11"></a><span class="co">#&gt; First of all, we need to know the contents of the datasets/vectors of numbers</span></span>
+<span id="cb45-12"><a href="#cb45-12"></a><span class="co">#&gt; </span></span>
+<span id="cb45-13"><a href="#cb45-13"></a><span class="co">#&gt; The contents of the vector is: 1 ,1 ,2 ,3 ,4 ,7 ,8 ,8 ,8 ,10 ,10 ,11 ,12 ,15 ,20 ,22 ,25Favorables cases:  17 </span></span>
+<span id="cb45-14"><a href="#cb45-14"></a><span class="co">#&gt; All possible results:  17 </span></span>
+<span id="cb45-15"><a href="#cb45-15"></a><span class="co">#&gt; </span></span>
+<span id="cb45-16"><a href="#cb45-16"></a><span class="co">#&gt; Formula applied -&gt; ( 17 /  17  =  1</span></span>
+<span id="cb45-17"><a href="#cb45-17"></a><span class="co">#&gt; Now try by your own! :D</span></span>
+<span id="cb45-18"><a href="#cb45-18"></a><span class="co">#&gt; </span></span>
+<span id="cb45-19"><a href="#cb45-19"></a><span class="co">#&gt; Use interactive.laplace function to practice.</span></span></code></pre></div>
+<ul>
+<li>binomial distribution:</li>
+</ul>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1"></a><span class="kw">explain.binomial</span>(n,x,p)</span>
+<span id="cb46-2"><a href="#cb46-2"></a><span class="co">#&gt; </span></span>
+<span id="cb46-3"><a href="#cb46-3"></a><span class="co">#&gt; __BIONOMIAL DISTRIBUTION__ </span></span>
+<span id="cb46-4"><a href="#cb46-4"></a><span class="co">#&gt; </span></span>
+<span id="cb46-5"><a href="#cb46-5"></a><span class="co">#&gt; Binomial distribution with parameters n and p is the discrete probability distribution of the number of successes in a sequence of n independent experiments, each asking a yes or no question, and each with its </span></span>
+<span id="cb46-6"><a href="#cb46-6"></a><span class="co">#&gt;         own Boolean-valued outcome: success (with probability p) or failure (with probability q = 1 - p)</span></span>
+<span id="cb46-7"><a href="#cb46-7"></a><span class="co">#&gt; </span></span>
+<span id="cb46-8"><a href="#cb46-8"></a><span class="co">#&gt; Formula -&gt;  ((factorial(n) / (factorial(x) * factorial(n-x))) * (p ^ x) * (1 - p)^(n - x))</span></span>
+<span id="cb46-9"><a href="#cb46-9"></a><span class="co">#&gt; </span></span>
+<span id="cb46-10"><a href="#cb46-10"></a><span class="co">#&gt; __Use Example__</span></span>
+<span id="cb46-11"><a href="#cb46-11"></a><span class="co">#&gt; </span></span>
+<span id="cb46-12"><a href="#cb46-12"></a><span class="co">#&gt; First of all, we need to know the n, the number of trials</span></span>
+<span id="cb46-13"><a href="#cb46-13"></a><span class="co">#&gt; In this case n= 3 </span></span>
+<span id="cb46-14"><a href="#cb46-14"></a><span class="co">#&gt; </span></span>
+<span id="cb46-15"><a href="#cb46-15"></a><span class="co">#&gt; Second, we need to know the p, probability of success.</span></span>
+<span id="cb46-16"><a href="#cb46-16"></a><span class="co">#&gt; In this case p= 0.7 </span></span>
+<span id="cb46-17"><a href="#cb46-17"></a><span class="co">#&gt; </span></span>
+<span id="cb46-18"><a href="#cb46-18"></a><span class="co">#&gt; Finally, we need to know the x, binomial random variable</span></span>
+<span id="cb46-19"><a href="#cb46-19"></a><span class="co">#&gt; In this case x= 2 </span></span>
+<span id="cb46-20"><a href="#cb46-20"></a><span class="co">#&gt; </span></span>
+<span id="cb46-21"><a href="#cb46-21"></a><span class="co">#&gt; Formula applied -&gt; (factorial( 3 ) / (factorial( 2 ) * factorial( 3 - 2 ))) * ( 0.7  ^  2 ) * (1 -  0.7 )^( 3  -  2 ) =  0.441</span></span>
+<span id="cb46-22"><a href="#cb46-22"></a><span class="co">#&gt; Now try by your own! :D</span></span>
+<span id="cb46-23"><a href="#cb46-23"></a><span class="co">#&gt; </span></span>
+<span id="cb46-24"><a href="#cb46-24"></a><span class="co">#&gt; Use interactive.binomial function to practice.</span></span></code></pre></div>
+<ul>
+<li>poisson distribution:</li>
+</ul>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a><span class="kw">explain.poisson</span>(k,lam)</span>
+<span id="cb47-2"><a href="#cb47-2"></a><span class="co">#&gt; </span></span>
+<span id="cb47-3"><a href="#cb47-3"></a><span class="co">#&gt; __POISSON DISTRIBUTION__ </span></span>
+<span id="cb47-4"><a href="#cb47-4"></a><span class="co">#&gt; </span></span>
+<span id="cb47-5"><a href="#cb47-5"></a><span class="co">#&gt; Poisson distribution that expresses the probability of a given number of events occurring in a fixed interval of time or space if these events occur with a known constant mean rate and independently of the time since the last event</span></span>
+<span id="cb47-6"><a href="#cb47-6"></a><span class="co">#&gt; </span></span>
+<span id="cb47-7"><a href="#cb47-7"></a><span class="co">#&gt; Formula -&gt;  ((e ^ (- lam)) * (lam ^ k)) / factorial(k)</span></span>
+<span id="cb47-8"><a href="#cb47-8"></a><span class="co">#&gt; </span></span>
+<span id="cb47-9"><a href="#cb47-9"></a><span class="co">#&gt; __Use Example__</span></span>
+<span id="cb47-10"><a href="#cb47-10"></a><span class="co">#&gt; </span></span>
+<span id="cb47-11"><a href="#cb47-11"></a><span class="co">#&gt; First of all, we need to know the e, the s Euler&#39;s number</span></span>
+<span id="cb47-12"><a href="#cb47-12"></a><span class="co">#&gt; In this case e= 2.718282  </span></span>
+<span id="cb47-13"><a href="#cb47-13"></a><span class="co">#&gt; </span></span>
+<span id="cb47-14"><a href="#cb47-14"></a><span class="co">#&gt; Second, we need to know the lam, it is a positive parameter that represents the number of times the phenomenon is expected to occur during a given interval.</span></span>
+<span id="cb47-15"><a href="#cb47-15"></a><span class="co">#&gt; In this case lam= 2 </span></span>
+<span id="cb47-16"><a href="#cb47-16"></a><span class="co">#&gt; </span></span>
+<span id="cb47-17"><a href="#cb47-17"></a><span class="co">#&gt; Finally, we need to know the k, the number of occurrences.</span></span>
+<span id="cb47-18"><a href="#cb47-18"></a><span class="co">#&gt; In this case k= 3 </span></span>
+<span id="cb47-19"><a href="#cb47-19"></a><span class="co">#&gt; </span></span>
+<span id="cb47-20"><a href="#cb47-20"></a><span class="co">#&gt; Formula applied -&gt; (( 2.718282   ^ (-  2 )) * ( 2  ^  3 )) / factorial( 3 ) =  0.180447044315484</span></span>
+<span id="cb47-21"><a href="#cb47-21"></a><span class="co">#&gt; Now try by your own! :D</span></span>
+<span id="cb47-22"><a href="#cb47-22"></a><span class="co">#&gt; </span></span>
+<span id="cb47-23"><a href="#cb47-23"></a><span class="co">#&gt; Use interactive.poisson function to practice.</span></span></code></pre></div>
+<ul>
+<li>normal distribution:</li>
+</ul>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1"></a><span class="kw">explain.normal</span>(nor)</span>
+<span id="cb48-2"><a href="#cb48-2"></a><span class="co">#&gt; </span></span>
+<span id="cb48-3"><a href="#cb48-3"></a><span class="co">#&gt; __NORMAL DISTRIBUTION__ </span></span>
+<span id="cb48-4"><a href="#cb48-4"></a><span class="co">#&gt; </span></span>
+<span id="cb48-5"><a href="#cb48-5"></a><span class="co">#&gt;  The standard normal distribution is one that has the mean value of zero, M = 0, and the standard deviation of unity, Sigma = 1.</span></span>
+<span id="cb48-6"><a href="#cb48-6"></a><span class="co">#&gt; Its density function is:</span></span>
+<span id="cb48-7"><a href="#cb48-7"></a><span class="co">#&gt; </span></span>
+<span id="cb48-8"><a href="#cb48-8"></a><span class="co">#&gt; Formula -&gt;  (1/(2pi)^(1/2)) * (e)^((-x^2)/2)</span></span>
+<span id="cb48-9"><a href="#cb48-9"></a><span class="co">#&gt; </span></span>
+<span id="cb48-10"><a href="#cb48-10"></a><span class="co">#&gt; __Use Example__</span></span>
+<span id="cb48-11"><a href="#cb48-11"></a><span class="co">#&gt; </span></span>
+<span id="cb48-12"><a href="#cb48-12"></a><span class="co">#&gt; First of all, we need to know the e, the s Euler&#39;s number</span></span>
+<span id="cb48-13"><a href="#cb48-13"></a><span class="co">#&gt; In this case e= 2.718282  </span></span>
+<span id="cb48-14"><a href="#cb48-14"></a><span class="co">#&gt; </span></span>
+<span id="cb48-15"><a href="#cb48-15"></a><span class="co">#&gt; Finally, we need to know pi, the number pi.</span></span>
+<span id="cb48-16"><a href="#cb48-16"></a><span class="co">#&gt; In this case pi= 3.141593 </span></span>
+<span id="cb48-17"><a href="#cb48-17"></a><span class="co">#&gt; </span></span>
+<span id="cb48-18"><a href="#cb48-18"></a><span class="co">#&gt; Formula applied -&gt; (1/(2* 3.141593 )^(1/2)) * ( 2.718282 )^((- 0.1 ^2)/2) =  0.396952547477012</span></span>
+<span id="cb48-19"><a href="#cb48-19"></a><span class="co">#&gt; Now try by your own! :D</span></span>
+<span id="cb48-20"><a href="#cb48-20"></a><span class="co">#&gt; </span></span>
+<span id="cb48-21"><a href="#cb48-21"></a><span class="co">#&gt; Use interactive.normal function to practice.</span></span></code></pre></div>
+<ul>
+<li>tstudent distribution:</li>
+</ul>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1"></a><span class="kw">explain.tstudent</span>(xt,ut,st,nt)</span>
+<span id="cb49-2"><a href="#cb49-2"></a><span class="co">#&gt; </span></span>
+<span id="cb49-3"><a href="#cb49-3"></a><span class="co">#&gt; __T-STUDENT DISTRIBUTION__ </span></span>
+<span id="cb49-4"><a href="#cb49-4"></a><span class="co">#&gt; </span></span>
+<span id="cb49-5"><a href="#cb49-5"></a><span class="co">#&gt; T-student is a probability distribution that arises from the problem of estimating the mean of a normally distributed population when the sample size is small.</span></span>
+<span id="cb49-6"><a href="#cb49-6"></a><span class="co">#&gt; </span></span>
+<span id="cb49-7"><a href="#cb49-7"></a><span class="co">#&gt; Formula -&gt;  (x-u)/(s/(n)^(1/2))</span></span>
+<span id="cb49-8"><a href="#cb49-8"></a><span class="co">#&gt; __Use Example__</span></span>
+<span id="cb49-9"><a href="#cb49-9"></a><span class="co">#&gt; </span></span>
+<span id="cb49-10"><a href="#cb49-10"></a><span class="co">#&gt; First of all, we need to know the x, is sample mean</span></span>
+<span id="cb49-11"><a href="#cb49-11"></a><span class="co">#&gt; In this case x= 290  </span></span>
+<span id="cb49-12"><a href="#cb49-12"></a><span class="co">#&gt; </span></span>
+<span id="cb49-13"><a href="#cb49-13"></a><span class="co">#&gt; Second, we need to know the u, is population mean</span></span>
+<span id="cb49-14"><a href="#cb49-14"></a><span class="co">#&gt; In this case u= 310  </span></span>
+<span id="cb49-15"><a href="#cb49-15"></a><span class="co">#&gt; </span></span>
+<span id="cb49-16"><a href="#cb49-16"></a><span class="co">#&gt; Next, we need to know the s, is population standard deviation</span></span>
+<span id="cb49-17"><a href="#cb49-17"></a><span class="co">#&gt; In this case s= 50  </span></span>
+<span id="cb49-18"><a href="#cb49-18"></a><span class="co">#&gt; </span></span>
+<span id="cb49-19"><a href="#cb49-19"></a><span class="co">#&gt; Finally, we need to know the n, is sample size.</span></span>
+<span id="cb49-20"><a href="#cb49-20"></a><span class="co">#&gt; In this case n= 16 </span></span>
+<span id="cb49-21"><a href="#cb49-21"></a><span class="co">#&gt; </span></span>
+<span id="cb49-22"><a href="#cb49-22"></a><span class="co">#&gt; Formula applied -&gt; ( 290  -  310 )/( 50 /( 16 )^(1/2)) =  -1.6</span></span>
+<span id="cb49-23"><a href="#cb49-23"></a><span class="co">#&gt; Now try by your own! :D</span></span>
+<span id="cb49-24"><a href="#cb49-24"></a><span class="co">#&gt; </span></span>
+<span id="cb49-25"><a href="#cb49-25"></a><span class="co">#&gt; Use interactive.tstudent function to practice.</span></span></code></pre></div>
+<ul>
+<li>chisquared distribution:</li>
+</ul>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1"></a><span class="kw">explain.chisquared</span>(data,data2)</span>
+<span id="cb50-2"><a href="#cb50-2"></a><span class="co">#&gt; </span></span>
+<span id="cb50-3"><a href="#cb50-3"></a><span class="co">#&gt; __CALCUATED CHI-SQUARED DISTRIBUTION__ </span></span>
+<span id="cb50-4"><a href="#cb50-4"></a><span class="co">#&gt; </span></span>
+<span id="cb50-5"><a href="#cb50-5"></a><span class="co">#&gt; Calculated chi-squared is a probability distribution that serves to manifest tests in hypothesis of frequencies, this test compares observed frequencies with those expected frequencies.</span></span>
+<span id="cb50-6"><a href="#cb50-6"></a><span class="co">#&gt; </span></span>
+<span id="cb50-7"><a href="#cb50-7"></a><span class="co">#&gt; Formula -&gt;  ((x[1]-y[1])^2)/y[1] + ((x[2]-y[2])^2)/y[2] + ... + ((x[n]-y[n])^2)/y[n]</span></span>
+<span id="cb50-8"><a href="#cb50-8"></a><span class="co">#&gt; __Use Example__</span></span>
+<span id="cb50-9"><a href="#cb50-9"></a><span class="co">#&gt; </span></span>
+<span id="cb50-10"><a href="#cb50-10"></a><span class="co">#&gt; First of all, we need to know the contents of the datasets/vectors of numbers</span></span>
+<span id="cb50-11"><a href="#cb50-11"></a><span class="co">#&gt; </span></span>
+<span id="cb50-12"><a href="#cb50-12"></a><span class="co">#&gt; The contents of the vector x is: </span></span>
+<span id="cb50-13"><a href="#cb50-13"></a><span class="co">#&gt; 1 ,1 ,2 ,3 ,4 ,7 ,8 ,8 ,8 ,10 ,10 ,11 ,12 ,15 ,20 ,22 ,25</span></span>
+<span id="cb50-14"><a href="#cb50-14"></a><span class="co">#&gt; The contents of the vector y is: </span></span>
+<span id="cb50-15"><a href="#cb50-15"></a><span class="co">#&gt; 1 ,1 ,4 ,5 ,5 ,5 ,7 ,8 ,10 ,10 ,10 ,11 ,20 ,22 ,22 ,24 ,25</span></span>
+<span id="cb50-16"><a href="#cb50-16"></a><span class="co">#&gt; </span></span>
+<span id="cb50-17"><a href="#cb50-17"></a><span class="co">#&gt; Formula applied -&gt;  0 +  0 +  1 +  0.8 +  0.2 +  0.8 +  0.142857142857143 +  0 +  0.4 +  0 +  0 +  0 +  3.2 +  2.22727272727273 +  0.181818181818182 +  0.166666666666667 +0 = 9.11861471861472</span></span>
+<span id="cb50-18"><a href="#cb50-18"></a><span class="co">#&gt; Now try by your own! :D</span></span>
+<span id="cb50-19"><a href="#cb50-19"></a><span class="co">#&gt; </span></span>
+<span id="cb50-20"><a href="#cb50-20"></a><span class="co">#&gt; Use interactive.chisquared function to practice.</span></span></code></pre></div>
+<ul>
+<li>fisher distribution:</li>
+</ul>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1"></a><span class="kw">explain.fisher</span>(data,data2)</span>
+<span id="cb51-2"><a href="#cb51-2"></a><span class="co">#&gt; </span></span>
+<span id="cb51-3"><a href="#cb51-3"></a><span class="co">#&gt; __ F FISHER DISTRIBUTION__ </span></span>
+<span id="cb51-4"><a href="#cb51-4"></a><span class="co">#&gt; </span></span>
+<span id="cb51-5"><a href="#cb51-5"></a><span class="co">#&gt; F-Fisher distribution is a continuous probability distribution that arises frequently as the null distribution of a test statistic.</span></span>
+<span id="cb51-6"><a href="#cb51-6"></a><span class="co">#&gt; </span></span>
+<span id="cb51-7"><a href="#cb51-7"></a><span class="co">#&gt; Formula -&gt; sx2/sw2</span></span>
+<span id="cb51-8"><a href="#cb51-8"></a><span class="co">#&gt; </span></span>
+<span id="cb51-9"><a href="#cb51-9"></a><span class="co">#&gt; sx2 &lt;- 2 * (((mean_(x)-meant)^2) + ((mean_(y)-meant)^2))</span></span>
+<span id="cb51-10"><a href="#cb51-10"></a><span class="co">#&gt; (variance_(x) + variance_(y))/ 2</span></span>
+<span id="cb51-11"><a href="#cb51-11"></a><span class="co">#&gt; __Use Example__</span></span>
+<span id="cb51-12"><a href="#cb51-12"></a><span class="co">#&gt; </span></span>
+<span id="cb51-13"><a href="#cb51-13"></a><span class="co">#&gt; First of all, we need two datasets.</span></span>
+<span id="cb51-14"><a href="#cb51-14"></a><span class="co">#&gt;  Dateset x: </span></span>
+<span id="cb51-15"><a href="#cb51-15"></a><span class="co">#&gt; 1 ,1 ,2 ,3 ,4 ,7 ,8 ,8 ,8 ,10 ,10 ,11 ,12 ,15 ,20 ,22 ,25</span></span>
+<span id="cb51-16"><a href="#cb51-16"></a><span class="co">#&gt;  Dateset x: </span></span>
+<span id="cb51-17"><a href="#cb51-17"></a><span class="co">#&gt; 1 ,1 ,4 ,5 ,5 ,5 ,7 ,8 ,10 ,10 ,10 ,11 ,20 ,22 ,22 ,24 ,25</span></span>
+<span id="cb51-18"><a href="#cb51-18"></a><span class="co">#&gt; Formula applied -&gt; ( 1.83045 / 59.46691 ) =  0.030780980089099</span></span>
+<span id="cb51-19"><a href="#cb51-19"></a><span class="co">#&gt; Now try by your own! :D</span></span>
+<span id="cb51-20"><a href="#cb51-20"></a><span class="co">#&gt; </span></span>
+<span id="cb51-21"><a href="#cb51-21"></a><span class="co">#&gt; Use interactive.fisher function to practice.</span></span></code></pre></div>
+<p>##User Interactive Functions:</p>
 <p>These functions are designed for the user to practice with them, and they are the following:</p>
 <ul>
 <li>interactive.mean()</li>
@@ -517,9 +1128,23 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li>interactive.relative_frecuency()</li>
 <li>interactive.absolute_acum_frecuency()</li>
 <li>interactive.relative_acum_frecuency()</li>
+<li>interactive.covariance()</li>
+<li>interactive.harmonicMean()</li>
+<li>interactive.pearson()</li>
+<li>interactive.cv()</li>
+<li>interactive.laplace()</li>
+<li>interactive.binomial()</li>
+<li>interactive.poisson()</li>
+<li>interactive.normal()</li>
+<li>interactive.tstudent()</li>
+<li>interactive.chisquared()</li>
+<li>interactive.fisher()</li>
 </ul>
 </div>
 
+
+
+<!-- code folding -->
 
 
 <!-- dynamically load mathjax for compatibility with self-contained -->

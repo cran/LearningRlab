@@ -9,13 +9,14 @@ There is no only calculus functions, further more, there are incorporated intera
   \tabular{ll}{
     Package: \tab LearningRlab\cr
     Type: \tab Package\cr
-    Version: \tab 1.2\cr
-    Date: \tab 2018-09-19\cr
+    Version: \tab 2.2\cr
+    Date: \tab 2021-1-17\cr
     License: \tab Unlimited\cr
   }
 }
 \author{
-Dennis Monheimius, \email{dennis.monhemimius@edu.uah.es}
+Jose Manuel Gomez Caceres, \email{josemanuel.gomezc@edu.uah.es}
+\cr{Dennis Monheimius, \email{dennis.monhemimius@edu.uah.es}}
 \cr{Eduardo Benito, \email{eduardo.benito@edu.uah.es}}
 \cr{Juan Jose Cuadrado, \email{jjcg@uah.es}}
 \cr{Universidad de Alcala de Henares}

@@ -8,7 +8,8 @@ quartile_(x)
 \arguments{
   \item{x}{Should be a vector}
 }
-\details{To calculate the quartiles, the user should give a vector. This function divide the dataset in 4 parts as equal as possible. The formula is the following:}
+\details{To calculate the quartiles, the user should give a vector. This function divide the dataset in 4 parts as equal as possible. The formula is the following:
+ \cr{\figure{quartile.jpg}{options: width=3.5in}}}
 
 \value{A vector sorted with the elements divided by 4 parts}
 

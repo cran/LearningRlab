@@ -14,8 +14,7 @@ standardDeviation_(x)
   \item{x}{Should be a numbers vector}
 }
 
-\details{To calculate the standard deviation, the user should give a numbers vector. The result is the square root of the sum of the differences between each vector element and the mean squared divided by the number of elemets. The standard deviation formule is the following:
-}
+\details{To calculate the standard deviation, the user should give a numbers vector. The result is the square root of the sum of the differences between each vector element and the mean squared divided by the number of elemets. The standard deviation formule is the following: \cr{\figure{sdeviat.jpg}{options: width=2.5in}}}
 
 \value{Numeric, the standard deviation of the numbers vector.}
 

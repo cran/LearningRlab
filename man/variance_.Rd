@@ -14,7 +14,7 @@ variance_(x)
   \item{x}{Should be a numbers vector}
 }
 
-\details{To calculate the variance, the user should give a numbers vector. The result is the expectation of the squared deviation of all numbers vector from its mean. The variance formule is the following:}
+\details{To calculate the variance, the user should give a numbers vector. The result is the expectation of the squared deviation of all numbers vector from its mean. The variance formule is the following:  \cr{\figure{variance.jpg}{options: width=2.5in}}}
 
 \value{Numeric, the variance of the numbers vector.}
 

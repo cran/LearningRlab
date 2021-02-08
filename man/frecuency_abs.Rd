@@ -9,7 +9,7 @@ frecuency_abs(v,x)
   \item{v}{Should be a vector}
   \item{x}{Should be a number}
 }
-\details{The absolute frecuency formula is the following: \cr{\figure{absolutefrec.jpg}}}
+\details{The absolute frecuency formula is the following: \cr{\figure{absolutefrec.jpg}{options: width=3.5in}}}
 \value{An integer that represents the number of times that the value appears in the vector}
 
 \author{

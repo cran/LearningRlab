@@ -3,12 +3,13 @@
 \title{Percentile Calculus Function}
 \description{This function calculate the percentiles of a vector of numbers}
 \usage{
-percentile_(x)
+percentile_(x, p)
 }
 \arguments{
   \item{x}{Should be a vector}
+  \item{p}{Should be a number, 0 => y =< 1}
 }
-\details{To calculate the percentiles, the user should give a vector. This function divide the dataset in 100 parts as equal as possible. The formula is the following: }
+\details{To calculate the percentiles, the user should give a vector. This function divide the dataset in 100 parts as equal as possible. The formula is the following: \cr{\figure{percentile.jpg}{options: width=3.5in}}}
 
 \value{A vector sorted with the elements divided by 100 parts}
 
@@ -28,7 +29,7 @@ Dennis Monheimius, \email{dennis.monhemimius@edu.uah.es}
     #data creation
     data = c(1,4,3,3,2,5,7,12,1,2,3,12)
     
-    percentile_(data)
+    percentile_(data,0.3)
     
 }
 }

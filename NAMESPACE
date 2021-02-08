@@ -1,5 +1,5 @@
 exportPattern(".")
-useDynLib(LearningRlab)
+useDynLib(LearningRlab, .registration = TRUE)
 
 importFrom("crayon", "bold")
 importFrom("crayon", "green")

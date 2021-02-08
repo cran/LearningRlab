@@ -14,7 +14,7 @@ averageDeviation_(x)
   \item{x}{Should be a numbers vector}
 }
 
-\details{To calculate the average deviation, the user should give a numbers vector. The result is the sum of the differences in absolute value between each vector element and the mean, divided by the number of elemets. The average absolute deviation formule is the following:}
+\details{To calculate the average deviation, the user should give a numbers vector. The result is the sum of the differences in absolute value between each vector element and the mean, divided by the number of elemets. The average absolute deviation formule is the following:  \cr{\figure{averageDeviation.jpg}{options: width=3.5in}}}
 
 \value{Numeric, the average absolute deviation of the numbers vector.}
 

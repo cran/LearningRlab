@@ -14,8 +14,7 @@ mode_(x)
   \item{x}{Should be a numbers vector}
 }
 
-\details{To calculate the mode of a dataset, the user should give a numbers vector. The result is the numeric value that appears most often. In other words, it's the value that is most likely to be sampled. The mode formule is the following:
-}
+\details{To calculate the mode of a dataset, the user should give a numbers vector. The result is the numeric value that appears most often. In other words, it's the value that is most likely to be sampled. The mode formule is the following: \cr{\figure{mode.jpg}{options: width=2.5in}}}
 
 \value{Numeric, the mode of the numbers vector.}
 

@@ -31,6 +31,26 @@ To explain the use of each function, we present a dataset to work with them:
 ```{r}
 data <- c(1,1,2,3,4,7,8,8,8,10,10,11,12,15,20,22,25)
 plot(data); 
+data2 <- c(1,1,4,5,5,5,7,8,10,10,10,11,20,22,22,24,25)
+plot(data2);
+
+#Binomial variables
+n = 3
+x = 2
+p = 0.7
+    
+#Poisson variables
+lam = 2
+k = 3
+
+#Normal variables
+nor = 0.1
+
+#T-Student variables
+xt = 290 
+ut = 310
+st = 50
+nt = 16
 
 ```
 
@@ -84,7 +104,7 @@ quartile_(data)
 
 The percentile calculus function:
 ```{r}
-percentile_(data)
+percentile_(data,0.3)
 
 ```
 
@@ -109,6 +129,82 @@ frecuency_absolute_acum(data,1)
 The relative acumulated frecuency calculus function:
 ```{r}
 frecuency_relative_acum(data,20)
+
+```
+
+
+The covariance calculus function:
+```{r}
+covariance_(data, data2)
+
+```
+
+The harmonic mean calculus funtion:
+```{r}
+harmonicMean_(data)
+
+```
+
+The pearson correlaction calculus funtion:
+```{r}
+pearson_(data,data2)
+
+
+```
+
+The coefficient of variation calculus funtion:
+```{r}
+cv_(data)
+
+
+```
+
+The Laplace rule calculus funtion:
+```{r}
+laplace_(data,data2)
+
+
+```
+
+The binomial distribution calculus funtion:
+```{r}
+binomial_(n,x,p)
+
+
+```
+
+The poisson distribution calculus funtion:
+```{r}
+poisson_(k,lam)
+
+
+```
+
+The normal distribution calculus funtion:
+```{r}
+normal_(nor)
+
+
+```
+
+The tstudent distribution calculus funtion:
+```{r}
+tstudent_(xt,ut,st,nt)
+
+
+```
+
+The chisquared distribution calculus funtion:
+```{r}
+chisquared_(data,data2)
+
+
+```
+
+The fisher distribution calculus funtion:
+```{r}
+fisher_(data,data2)
+
 
 ```
 
@@ -195,6 +291,82 @@ explain.relative_acum_frecuency(data,8)
 
 ```
 
+- covariance:
+```{r}
+explain.covariance(data,data2)
+
+```
+
+- harmonic mean:
+```{r}
+explain.harmonicMean(data)
+
+
+```
+
+- pearson correlaction:
+```{r}
+explain.pearson(data,data2)
+
+
+```
+
+- coefficient of variation:
+```{r}
+explain.cv(data)
+
+
+```
+
+- Laplace rule:
+```{r}
+explain.laplace(data,data2)
+
+
+```
+
+- binomial distribution:
+```{r}
+explain.binomial(n,x,p)
+
+
+```
+
+- poisson distribution:
+```{r}
+explain.poisson(k,lam)
+
+
+```
+
+- normal distribution:
+```{r}
+explain.normal(nor)
+
+
+```
+
+- tstudent distribution:
+```{r}
+explain.tstudent(xt,ut,st,nt)
+
+
+```
+
+- chisquared distribution:
+```{r}
+explain.chisquared(data,data2)
+
+
+```
+
+- fisher distribution:
+```{r}
+explain.fisher(data,data2)
+
+
+```
+
 
 ##User Interactive Functions:
 
@@ -213,3 +385,14 @@ These functions are designed for the user to practice with them, and they are th
 - interactive.relative_frecuency()
 - interactive.absolute_acum_frecuency()
 - interactive.relative_acum_frecuency()
+- interactive.covariance()
+- interactive.harmonicMean()
+- interactive.pearson()
+- interactive.cv()
+- interactive.laplace()
+- interactive.binomial()
+- interactive.poisson()
+- interactive.normal()
+- interactive.tstudent()
+- interactive.chisquared()
+- interactive.fisher()

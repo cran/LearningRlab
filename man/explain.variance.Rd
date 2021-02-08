@@ -34,7 +34,7 @@ Dennis Monheimius, \email{dennis.monhemimius@edu.uah.es}
   #data creation
   data <- c(10,4,5,7,3,4,1)
   
-  explain.averageDeviation(data)
+  explain.variance(data)
     
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

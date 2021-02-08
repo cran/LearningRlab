@@ -9,7 +9,7 @@ frecuency_relative_acum(v,x)
   \item{v}{Should be a vector}
   \item{x}{Should be a number}
 }
-\details{The accumulated relative frecuency formula is the following: \cr{\figure{relativeacumfrec.jpg}}}
+\details{The accumulated relative frecuency formula is the following: \cr{\figure{relativeacumfrec.jpg}{options: width=3.5in}}}
 \value{A double that represents the number of times that the value appears in the vector regarding the total of elements}
 
 \author{
