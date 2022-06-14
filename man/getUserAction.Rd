@@ -10,10 +10,6 @@
 getUserAction()
 }
 
-\arguments{
-  \item{}{void, not argument}
-}
-
 %\details{}
 
 \value{A vector}

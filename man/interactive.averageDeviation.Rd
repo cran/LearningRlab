@@ -10,10 +10,6 @@
 interactive.averageDeviation()
 }
 
-\arguments{
-  \item{}{void, not argument}
-}
-
 \details{The user provides the dataset when the function needs it. After that, the function will ask what is the correct result for this dataset. The function itself will provide the average absolute deviation formule, apart from the averageDeviation_ help document.}
 
 \value{An interactive process to calculate the average absolute deviation}

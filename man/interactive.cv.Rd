@@ -10,10 +10,6 @@
 interactive.cv()
 }
 
-\arguments{
-  \item{}{void, not argument}
-}
-
 \details{The user provides the dataset when the function needs it. After that, the function will ask what is the correct result for this dataset. The function itself will provide the coefficient of variation formule, apart from the cv_ help document.}
 
 \value{An interactive process to calculate the average absolute deviation}

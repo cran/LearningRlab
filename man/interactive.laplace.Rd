@@ -10,10 +10,6 @@
 interactive.laplace()
 }
 
-\arguments{
-  \item{}{void, not argument}
-}
-
 \details{The user provides the values when the function needs it. After that, the function will ask what is the correct result for this datas. The function itself will provide the Laplace's rule formule, apart from the laplace_ help document.}
 
 \value{An interactive process to calculate the Laplace's rule.}

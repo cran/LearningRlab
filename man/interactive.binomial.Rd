@@ -10,10 +10,6 @@
 interactive.binomial()
 }
 
-\arguments{
-  \item{}{void, not argument}
-}
-
 \details{The user provides the values when the function needs it. After that, the function will ask what is the correct result for this datas. The function itself will provide the binomial distribution formule, apart from the binomial_ help document.}
 
 \value{An interactive process to calculate the binomial distribution.}
