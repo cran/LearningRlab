@@ -9,7 +9,7 @@ quartile_(x)
   \item{x}{Should be a vector}
 }
 \details{To calculate the quartiles, the user should give a vector. This function divide the dataset in 4 parts as equal as possible. The formula is the following:
- \cr{\figure{quartile.jpg}{options: width=3.5in}}}
+ \cr{\if{latex}{\figure{quartile.jpg}{options: width=3.5in}} \if{html}{\figure{quartile.jpg}{options: width=336}}}}
 
 \value{A vector sorted with the elements divided by 4 parts}
 

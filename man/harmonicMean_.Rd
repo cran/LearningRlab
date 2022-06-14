@@ -14,7 +14,7 @@ harmonicMean_ (x)
   \item{x}{Should be a numbers vector}
 }
 
-\details{To calculate the harmonic mean, the user should give a numbers vector. The result is calculated by dividing the number of observations by the reciprocal of each number in the vector. The harmonic mean formule is the following: \cr{\figure{harmonicMean.jpg}{options: width=3.5in}}}
+\details{To calculate the harmonic mean, the user should give a numbers vector. The result is calculated by dividing the number of observations by the reciprocal of each number in the vector. The harmonic mean formule is the following: \cr{\if{html}{\figure{harmonicMean.jpg}{options: width=3.5in}} \if{html}{\figure{harmonicMean.jpg}{options: width=336}}}}
 
 \value{Numeric, the harmonic mean of the numbers vector.}
 

@@ -15,7 +15,7 @@ laplace_(x,y)
   \item{y}{Should be a vector}
 }
 
-\details{To calculate the Laplace's rule, the user should give two vector (unfavorable cases/favorable cases). The result isas the quotient between the number of favorable cases to A, and that of all possible results of the experiment. The Laplace's rule formule is the following:  \cr{\figure{laplace.jpg}{options: width=3.5in}}}
+\details{To calculate the Laplace's rule, the user should give two vector (unfavorable cases/favorable cases). The result isas the quotient between the number of favorable cases to A, and that of all possible results of the experiment. The Laplace's rule formule is the following:  \cr{\if{latex}{\figure{laplace.jpg}{options: width=3.5in}} \if{html}{\figure{laplace.jpg}{options: width=336}}}}
 
 \value{Numeric, the pearson correlation.}
 

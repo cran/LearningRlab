@@ -15,7 +15,7 @@ chisquared_(x,y)
   \item{y}{Should be a vector.}
 }
 
-\details{To calculate the chisquared distribution, the user should give two vectors of numbers. The result  is a sum of the squares of k independent standard normal random variables. The chisquared distribution formule is the following:  \cr{\figure{chisquared.jpg}{options: width=3.5in}}}
+\details{To calculate the chisquared distribution, the user should give two vectors of numbers. The result  is a sum of the squares of k independent standard normal random variables. The chisquared distribution formule is the following:  \cr{\if{latex}{\figure{chisquared.jpg}{options: width=3.5in}} \if{html}{\figure{chisquared.jpg}{options: width=336}}}}
 
 \value{Numeric, the chisquared distribution of two vectors of numbers.}
 

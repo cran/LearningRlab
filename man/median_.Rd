@@ -14,7 +14,7 @@
 	\item{x}{Should be a numbers vector}
 }
 
-\details{To calculate the median, the user should give a numbers vector. The result is the value separating the higher half from the lower half of the dataset, it may be thought of as the middle value. The median formule is the following: \cr{\figure{median.jpg}{options: width=3.5in}}
+\details{To calculate the median, the user should give a numbers vector. The result is the value separating the higher half from the lower half of the dataset, it may be thought of as the middle value. The median formule is the following: \cr{\if{latex}{\figure{median.jpg}{options: width=3.5in} \if{html}{\figure{median.jpg}{options: width=336}}}
 }
 
 \value{A numeric, the median of the numbers vector.}

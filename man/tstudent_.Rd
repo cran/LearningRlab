@@ -17,7 +17,7 @@ tstudent_(x,u,s,n)
   \item{n}{Should be a number}
 }
 
-\details{To calculate the T-Student distribution, the user should give four number (sample mean, population mean, population standard deviation and sample size). The result  is a probability distribution that arises from the problem of estimating the mean of a normally distributed population when the sample size is small. The T-Student distributionformule is the following:  \cr{\figure{tstudent.jpg}{options: width=2.5in}}}
+\details{To calculate the T-Student distribution, the user should give four number (sample mean, population mean, population standard deviation and sample size). The result  is a probability distribution that arises from the problem of estimating the mean of a normally distributed population when the sample size is small. The T-Student distributionformule is the following:  \cr{\if{latex}{\figure{tstudent.jpg}{options: width=2.5in}} \if{html}{\figure{tstudent.jpg}{options: width=240}}}}
 
 \value{Numeric, the T-Student distribution.}
 

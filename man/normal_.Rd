@@ -14,7 +14,7 @@ normal_(x)
   \item{x}{Should be a numbers.}
 }
 
-\details{To calculate the normal distribution, the user should give a number. The result isis a type of continuous probability distribution for a real-valued random variable. The normal distribution formule is the following:  \cr{\figure{normal.jpg}{options: width=2.5in}}}
+\details{To calculate the normal distribution, the user should give a number. The result isis a type of continuous probability distribution for a real-valued random variable. The normal distribution formule is the following:  \cr{\if{latex}{\figure{normal.jpg}{options: width=2.5in}} \if{html}{\figure{normal.jpg}{options: width=240}}}}
 
 \value{Numeric, the normal distribution.}
 
