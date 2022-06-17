@@ -1,8 +1,10 @@
 Package: LearningRlab
-Version: 2.2
-Date: 2021-2-6
+Version: 2.3
+Date: 2022-6-17
 Title: Statistical Learning Functions
-Authors@R: c(person("Jose Manuel","Gomez Caceres", role = c("aut", "cre"), 
+Authors@R: c(person("Carlos Javier","Hellin Asensio", role = c("aut", "cre"), 
+              email = "carlos.hellin@edu.uah.es"), 
+            person("Jose Manuel","Gomez Caceres", role = c("aut"), 
               email = "josemanuel.gomezc@edu.uah.es"), 
             person("Dennis","Monheimius", role = c("aut"), 
               email = "dennis.monhemimius@edu.uah.es"), 
@@ -12,12 +14,13 @@ Authors@R: c(person("Jose Manuel","Gomez Caceres", role = c("aut", "cre"),
               email = "jjcg@uah.es"),
             person("Universidad de Alcala de Henares", role = c("aut"))
           )
-Author: Jose Manuel Gomez Caceres [aut, cre],
+Author: Carlos Javier Hellin Asensio [aut, cre],
+  Jose Manuel Gomez Caceres [aut],
   Dennis Monheimius [aut],
   Eduardo Benito [aut],
   Juan Jose Cuadrado [aut],
   Universidad de Alcala de Henares [aut]
-Maintainer: Jose Manuel Gomez Caceres <josemanuel.gomezc@edu.uah.es>
+Maintainer: Carlos Javier Hellin Asensio <carlos.hellin@edu.uah.es>
 Depends: magick, crayon
 Suggests: knitr, rmarkdown
 Description: Aids in learning statistical functions incorporating the result of calculus done with each function and how they are obtained, that is, which equation and variables are used. Also for all these equations and their related variables detailed explanations and interactive exercises are also included. All these characteristics allow to the package user to improve the learning of statistics basics by means of their use.
