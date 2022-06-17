@@ -9,7 +9,7 @@ frecuency_absolute_acum(v,x)
   \item{v}{Should be a vector}
   \item{x}{Should be a number}
 }
-\details{The accumulated absolute frecuency formula is the following: \cr{\figure{absoluteacumfrec.jpg}{options: width=3.5in}}}
+\details{The accumulated absolute frecuency formula is the following: \cr{\if{latex}{\figure{absoluteacumfrec.jpg}{options: width=3.5in}} \if{html}{\figure{absoluteacumfrec.jpg}{options: width=336}}}}
 \value{A double that represents the number of times that the value appears in the vector regarding the total of elements}
 
 \author{

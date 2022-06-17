@@ -9,7 +9,7 @@ percentile_(x, p)
   \item{x}{Should be a vector}
   \item{p}{Should be a number, 0 => y =< 1}
 }
-\details{To calculate the percentiles, the user should give a vector. This function divide the dataset in 100 parts as equal as possible. The formula is the following: \cr{\figure{percentile.jpg}{options: width=3.5in}}}
+\details{To calculate the percentiles, the user should give a vector. This function divide the dataset in 100 parts as equal as possible. The formula is the following: \cr{\if{latex}{\figure{percentile.jpg}{options: width=3.5in}} \if{html}{\figure{percentile.jpg}{options: width=336}}}}
 
 \value{A vector sorted with the elements divided by 100 parts}
 

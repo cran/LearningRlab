@@ -10,10 +10,6 @@
 interactive.chisquared()
 }
 
-\arguments{
-  \item{}{void, not argument}
-}
-
 \details{The user provides the datasets when the function needs it. After that, the function will ask what is the correct result for this dataset. The function itself will provide the chisquared distribution formule, apart from the chisquared_ help document.}
 
 \value{An interactive process to calculate the chisquared distribution}

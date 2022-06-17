@@ -10,10 +10,6 @@
 interactive.variance()
 }
 
-\arguments{
-  \item{}{void, not argument}
-}
-
 \details{The user provides the dataset when the function needs it. After that, the function will ask what is the correct result for this dataset. The function itself will provide the variance formule, apart from the variance_ help document.}
 
 \value{An interactive process to calculate the average absolute deviation}

@@ -14,7 +14,7 @@ geometricMean_(x)
   \item{x}{Should be a numbers vector}
 }
 
-\details{To calculate the geometric mean of a dataset, the user should give a numbers vector. The result is the product of all vector elements raise to 1 divided by the number of elements. The arithmetic mean formule is the following: \cr{\figure{gmean.jpg}{options: width=3.5in}}}
+\details{To calculate the geometric mean of a dataset, the user should give a numbers vector. The result is the product of all vector elements raise to 1 divided by the number of elements. The arithmetic mean formule is the following: \cr{\if{latex}{\figure{gmean.jpg}{options: width=3.5in}} \if{html}{\figure{gmean.jpg}{options: width=336}}}}
 
 \value{A numeric, the geometric mean of the numbers vector.}
 

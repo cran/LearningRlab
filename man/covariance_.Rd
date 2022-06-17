@@ -15,7 +15,7 @@ covariance_(x,y)
   \item{y}{Should be a vector}
 }
 
-\details{To calculate the covariance, the user should give two vectors of numbers. The result is a measure of the joint variability of two vectors of numbers. The covariance formule is the following: \cr{\figure{covariance.jpg}{options: width=3.5in}}}
+\details{To calculate the covariance, the user should give two vectors of numbers. The result is a measure of the joint variability of two vectors of numbers. The covariance formule is the following: \cr{\if{latex}{\figure{covariance.jpg}{options: width=3.5in}} \if{html}{\figure{covariance.jpg}{options: width=336}}}}
 
 \value{Numeric, the covariance of two vectors of numbers.}
 

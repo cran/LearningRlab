@@ -10,10 +10,6 @@
 interactive.covariance()
 }
 
-\arguments{
-  \item{}{void, not argument}
-}
-
 \details{The user provides the datasets when the function needs it. After that, the function will ask what is the correct result for this dataset. The function itself will provide the covariance formule, apart from the covariance_ help document.}
 
 \value{An interactive process to calculate the covariance}

@@ -15,7 +15,7 @@ fisher_(x,y)
   \item{y}{Should be a vector}
 }
 
-\details{To calculate the fisher distribution, the user should give two vectors of numbers. The result is a continuous probability distribution that arises frequently as the null distribution of a test statistic. The fisher distributionformule is the following:  \cr{\figure{fisher.jpg}{options: width=3.5in}}}
+\details{To calculate the fisher distribution, the user should give two vectors of numbers. The result is a continuous probability distribution that arises frequently as the null distribution of a test statistic. The fisher distributionformule is the following:  \cr{\if{latex}{\figure{fisher.jpg}{options: width=3.5in}} \if{html}{\figure{fisher.jpg}{options: width=336}}}}
 
 \value{Numeric, the fisher distribution.}
 

@@ -15,7 +15,7 @@ pearson_(x,y)
   \item{y}{Should be a vector}
 }
 
-\details{To calculate the pearson correlation, the user should give two vectors of numbers. The result is the covariance of the two vectors of numbers divided by the product of their standard deviations. The pearson correlation formule is the following:  \cr{\figure{pearson.jpg}{options: width=3.5in}}}
+\details{To calculate the pearson correlation, the user should give two vectors of numbers. The result is the covariance of the two vectors of numbers divided by the product of their standard deviations. The pearson correlation formule is the following:  \cr{\if{latex}{\figure{pearson.jpg}{options: width=3.5in}} \if{html}{\figure{pearson.jpg}{options: width=336}}}}
 
 \value{Numeric, the pearson correlation of two vectors of numbers.}
 

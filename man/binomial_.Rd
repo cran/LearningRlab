@@ -16,7 +16,7 @@ binomial_(n,x,p)
   \item{p}{Should be a numbers.}
 }
 
-\details{To calculate the binomial distribution, the user should give three number (the number of trials, probability of success and binomial random variable). The result is a discrete probability distribution that counts the number of successes in a sequence of n independent Bernoulli trials with a fixed probability p of occurrence of success between trials. The binomial distribution formule is the following:  \cr{\figure{binomial.jpg}{options: width=3.5in}}}
+\details{To calculate the binomial distribution, the user should give three number (the number of trials, probability of success and binomial random variable). The result is a discrete probability distribution that counts the number of successes in a sequence of n independent Bernoulli trials with a fixed probability p of occurrence of success between trials. The binomial distribution formule is the following:  \cr{\if{latex}{\figure{binomial.jpg}{options: width=3.5in}} \if{html}{\figure{binomial.jpg}{options: width=336}}}}
 
 \value{Numeric, the binomial distribution of three variables.}
 

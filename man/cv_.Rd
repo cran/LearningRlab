@@ -14,7 +14,7 @@ cv_(x)
   \item{x}{Should be a numbers vector}
 }
 
-\details{To calculate the coefficient of variation, the user should give a numbers vector. The result is defined as the ratio of the standard deviation to the mean. The coefficient of variation formule is the following: \cr{\figure{cv.jpg}{options: width=2.5in}}}
+\details{To calculate the coefficient of variation, the user should give a numbers vector. The result is defined as the ratio of the standard deviation to the mean. The coefficient of variation formule is the following: \cr{\if{latex}{\figure{cv.jpg}{options: width=2.5in}} \if{html}{\figure{cv.jpg}{options: width=240}}}}
 
 \value{Numeric, the coefficient of variation of the numbers vector.}
 

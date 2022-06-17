@@ -10,10 +10,6 @@
 interactive.normal()
 }
 
-\arguments{
-  \item{}{void, not argument}
-}
-
 \details{The user provides the values when the function needs it. After that, the function will ask what is the correct result for this data. The function itself will provide the normal distribution formule, apart from the normal_ help document.}
 
 \value{An interactive process to calculate the normal distribution.}

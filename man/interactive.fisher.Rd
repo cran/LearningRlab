@@ -10,10 +10,6 @@
 interactive.fisher()
 }
 
-\arguments{
-  \item{}{void, not argument}
-}
-
 \details{The user provides the datasets when the function needs it. After that, the function will ask what is the correct result for this datasets. The function itself will provide the fisher distribution formule, apart from the fisher_ help document.}
 
 \value{An interactive process to calculate the fisher distribution}
